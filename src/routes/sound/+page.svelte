@@ -8,13 +8,13 @@
 
 <div>
 <Header></Header>
-  <h3>SOUND(  )</h3>
+  <h3 class="pagetitle">SOUND(  )</h3>
   <div>
     <p>
       1. In this first example we are using some built in drums to create a
-      simple rhythm.<br> The weird notation below, the <b>bd</b> and the <b>sd</b> are
-      often used to abbreviate the words <b>BassDrum</b> and <b>SnareDrum</b>. 
-    </p>
+      simple rhythm.<br> The weird notation below, the <b>bd</b> and the
+      <b>sd</b> are often used to abbreviate drums, as in <b>B</b>ass<b>D</b>rum
+      and <b>S</b>nare<b>D</b>rum. </p>
     <p>
       Everything within the quotes <b>(" ")</b> is interpreted as a pattern. The space
       between each word is there so the program knows how many sounds is in the
@@ -30,8 +30,9 @@
       </p>
     <p>
       In this example we have added the brackets <b>([  ])</b>. They are used for
-      grouping sounds. All the sounds inside the <b>[  ]</b> will play within the time
-      it takes for one sound outside the <b>[  ]</b> to play.
+      grouping sounds into sub-patterns. All the sounds inside the <b>[  ]</b>
+      will play within the time it takes for one sound outside the <b>[  ]</b>
+      to play.
     </p>
   </div>
   <Strudel title="sound()" url={examples[1]} />
@@ -50,6 +51,13 @@
       multiplication symbol <b>(*)</b>. Combined with a number <b>(*5)</b> and written
       close to the name of a sound, it tells the sound to play that many times
       during its normal duration.
+    </p>
+  </div>
+  <Strudel title="sound()" url={examples[3]} />
+  <div>
+    <p>
+      5. Just for fun, here is a strudel-program using all of the above
+      techniques to make a drum beat.
     </p>
   </div>
   <Strudel title="sound()" url={examples[3]} />

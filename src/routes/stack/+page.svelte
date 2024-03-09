@@ -10,5 +10,6 @@
   <Strudel 
     title="stack()"
     url={examples[0]}
+
   />
 </div>

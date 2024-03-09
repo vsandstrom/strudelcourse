@@ -1,16 +1,29 @@
 <script type="module">
   // import Strudel from "$lib/Strudel.svelte";
   import Header from "$lib/Header.svelte";
-  import {readable} from 'svelte/store';
 </script>
 
 
 <svelte:head>
 	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+  <meta name="title" content="Creative Coding Chalmers">
+  <meta name="description" content="Course in programming using the Strudel music live-coding language">
+  <meta name="keywords" content="programming, course, creative, music, chalmers">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <meta name="revisit-after" content="14 days">
+  <meta name="author" content="Viktor Sandström">
 </svelte:head>
 
-<Header></Header>
+<Header>
+</Header>
+
+<section>
+  <p>
+  Hello and welcome!
+  </p>
+</section>
 
 <style>
 	section {
