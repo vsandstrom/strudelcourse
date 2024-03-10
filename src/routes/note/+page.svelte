@@ -6,10 +6,10 @@
 </script>
 
 <div>
-
-<Header></Header>
+  <Header />
   <Strudel 
     title="note()" 
     url={examples[0]}
   />
 </div>
+
