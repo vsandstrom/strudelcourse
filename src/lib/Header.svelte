@@ -4,7 +4,6 @@
 
 <section id="header">
   <a href="{base}/">HOME</a>
-  <a href="{base}/basic">basic</a>
   <a href="{base}/sound">sound()</a>
   <a href="{base}/note">note()</a>
   <a href="{base}/stack">stack()</a>
