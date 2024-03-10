@@ -6,6 +6,8 @@
 	<main>
 		<slot />
 	</main>
+
+  <footer></footer>
 </div>
 
 <style>
@@ -32,6 +34,7 @@
 		justify-content: center;
 		align-items: center;
 		padding: 12px;
+    height: 6em;
 	}
 
 	footer a {

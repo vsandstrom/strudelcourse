@@ -7,9 +7,23 @@
 </script>
 
 <div>
-<Header></Header>
+  <Header />
   <h3 class="pagetitle">SOUND(  )</h3>
-  <div>
+  <div class="links">
+    <a href="#concepts">Concepts</a>
+    <a href="#drums">Drum cheat-sheet</a>
+  </div>
+  <div class="links examples">
+    Examples: 
+    <a href="#sound1">1</a>
+    <a href="#sound2">2</a>
+    <a href="#sound3">3</a>
+    <a href="#sound4">4</a>
+    <a href="#sound5">5</a>
+  </div>
+
+
+  <div id="sound1">
     <p>
       1. In this first example we are using some built in drums to create a
       simple rhythm.<br> The weird notation below, the <b>bd</b> and the
@@ -22,12 +36,49 @@
     </p>
   </div>
   <Strudel title="sound()" url={examples[0]} />
-  <div>
+
+  <div id="sound2">
     <p>
-      2. Others that we can use per default are <b>cb</b> and <b>hh</b> among others,
-      which stand for <b>CowBell</b> and <b></b>. These are common names for the
-      different drums and cymbals of a drum kit.
-      </p>
+      2. Others that we can use per default are <b>cb</b> and <b>hh</b> among
+      others, which stand for <b>C</b>ow<b>B</b>ell and <b>H</b>i<b>H</b>at.
+      These are common names for the different drums and cymbals of a drum kit.
+    </p>
+    <table id="drums">
+      <thead>
+      <tr>
+        <th>Real drum names</th><th>Strudel short-hand</th>
+      </tr>
+      </thead>
+      <tbody id="drumnames">
+      <tr>
+        <td><b>B</b>ass<b>D</b>rum</td> <td>bd</td>
+      </tr>
+      <tr>
+        <td><b>S</b>nare<b>D</b>rum</td> <td>sd</td>
+      </tr>
+      <tr>
+        <td><b>RIM</b>shot</td> <td>rim</td>
+      </tr>
+      <tr>
+        <td><b>H</b>i<b>H</b>at (closed)</td> <td>hh</td>
+      </tr>
+      <tr>
+        <td><b>O</b>pen hi<b>H</b>at</td> <td>oh</td>
+      </tr>
+      <tr>
+        <td><b>CR</b>ash</td> <td>cr</td>
+      </tr>
+      <tr>
+        <td><b>R</b>i<b>D</b>e</td> <td>rd</td>
+      </tr>
+      <tr>
+        <td><b>H</b>igh, <b>M</b>edium and <b>L</b>ow <b>T</b>oms </td> <td>ht, mt, lt</td>
+      </tr>
+      <tr>
+        <td><b>C</b>ow<b>B</b>ell</td> <td>cb</td>
+      </tr>
+      </tbody>
+    </table>
     <p>
       In this example we have added the brackets <b>([  ])</b>. They are used for
       grouping sounds into sub-patterns. All the sounds inside the <b>[  ]</b>
@@ -36,7 +87,8 @@
     </p>
   </div>
   <Strudel title="sound()" url={examples[1]} />
-  <div>
+
+  <div id="sound3">
     <p>
       3. There is also the comma <b>(,)</b> which makes sounds play on top of
       eachother at the same time. Notice the difference between grouping with
@@ -45,7 +97,8 @@
     </p>
   </div>
   <Strudel title="sound()" url={examples[2]} />
-  <div>
+
+  <div id="sound4">
     <p>
       4. There is one more thing. To repeat a sound, you can use the
       multiplication symbol <b>(*)</b>. Combined with a number <b>(*5)</b> and written
@@ -54,15 +107,17 @@
     </p>
   </div>
   <Strudel title="sound()" url={examples[3]} />
-  <div>
+
+  <div id="sound5">
     <p>
       5. Just for fun, here is a strudel-program using all of the above
       techniques to make a drum beat.
     </p>
   </div>
-  <Strudel title="sound()" url={examples[3]} />
+  <Strudel title="sound()" url={examples[4]} />
+
   <h3>Concepts:</h3>
-  <div class="concepts">
+  <div id="concepts">
     <h4>Commands:</h4>
       <ul><li>
         <b>sound()</b> - the command we run to use the built-in sounds.
@@ -78,7 +133,46 @@
 </div>
 
 <style>
-.concepts {
+.pagetitle {
+  margin-left: -2em;
+} 
+
+#concepts {
   margin-left: 1.5em;
 }
+
+ol > li {
+  margin-bottom: 0.6em;
+}
+
+table {
+  width: 80%;
+  margin: 3em 2em 4em 2em;
+}
+
+th {
+  text-align: left;
+  font-size: 1.2em;
+  border-bottom:groove;
+  padding: 0.4em 0;
+  margin-left: -0.2em;
+}
+
+td:last-child {
+  font-weight:bold;
+  
+}
+
+.links {
+  display: flex;
+  gap: 1.2em;
+  margin-left: -1em;
+}
+
+.examples {
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+
 </style>
