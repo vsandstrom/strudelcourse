@@ -20,9 +20,10 @@
 </Header>
 
 <section>
-  <p>
-  Hello and welcome!
-  </p>
+  <h1>Creative Coding!</h1>
+  <div>
+    
+  </div>
 </section>
 
 <style>
