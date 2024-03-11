@@ -118,7 +118,7 @@
     </p>
       <ol>
         <li>
-          The first example plays 4 bassdrums.
+          The first example plays 4 <b>B</b>ass<b>D</b>rums.
         </li>
         <li>
           The second uses sub-patterns to play a <b>B</b>ass<b>D</b>rum 
