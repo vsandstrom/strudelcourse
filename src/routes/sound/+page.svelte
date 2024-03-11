@@ -30,7 +30,7 @@
       <b>sd</b> are often used to abbreviate drums, as in <b>B</b>ass<b>D</b>rum
       and <b>S</b>nare<b>D</b>rum. </p>
     <p>
-      Everything within the quotes <b>(" ")</b> is interpreted as a pattern. The space
+      Everything within the quotes <b id="quotes-pattern">(" ")</b> is interpreted as a pattern. The space
       between each word is there so the program knows how many sounds is in the
       pattern.
     </p>
@@ -79,7 +79,7 @@
       </tr>
       </tbody>
     </table>
-    <p>
+    <p id="sound2-2">
       In this example we have added the brackets <b>([  ])</b>. They are used for
       grouping sounds into sub-patterns. All the sounds inside the <b>[  ]</b>
       will play within the time it takes for one sound outside the <b>[  ]</b>
@@ -152,10 +152,10 @@
       </li></ul>
     <h4>Syntax:</h4>
     <ol>
-      <li> <b>" "</b> - grouping sounds into a pattern. </li>
-      <li> <b>[ ]</b> - grouping sounds into a sub-pattern. </li>
-      <li> <b>,</b> - allowing sounds to be played simultaneously </li>
-      <li> <b>*</b> - repeating a perticular sound (ex: "bd*4") </li>
+      <li> <b><a href="#sound1">" "</a></b> - grouping sounds into a pattern. </li>
+      <li> <b><a href="#sound2-2">[ ]</a></b> - grouping sounds into a sub-pattern. </li>
+      <li> <b><a href="#sound3">,</a></b> - allowing sounds to be played simultaneously </li>
+      <li> <b><a href="#sound4">*</a></b> - repeating a perticular sound (ex: "bd*4") </li>
     </ol>
   </div>
 </div>
