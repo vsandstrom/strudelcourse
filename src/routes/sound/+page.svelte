@@ -92,7 +92,7 @@
     <p>
       3. There is also the comma <b>(,)</b> which makes sounds play on top of
       eachother at the same time. Notice the difference between grouping with
-      a space: <b>[hh cb]</b> between and grouping with a comma: <b>[bd,
+      a space: <b>[hh cb]</b> and grouping with a comma: <b>[bd,
       hh]</b>.
     </p>
   </div>
@@ -144,7 +144,7 @@
   </div>
   <Strudel title="sound()" url={examples[4]} height={800} />
 
-  <h3>Concepts:</h3>
+  <h3>Vocabulary:</h3>
   <div id="concepts">
     <h4>Commands:</h4>
       <ul><li>
