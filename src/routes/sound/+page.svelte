@@ -162,7 +162,7 @@
 
 <style>
 .pagetitle {
-  margin-left: -2em;
+  margin-left: 0;
 } 
 
 #concepts {
@@ -194,13 +194,12 @@ td:last-child {
 .links {
   display: flex;
   gap: 1.2em;
-  margin-left: -1em;
+  margin-left: 0em;
 }
 
 .examples {
   margin-top: 1em;
   margin-bottom: 2em;
 }
-
 
 </style>
