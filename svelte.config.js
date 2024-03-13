@@ -16,8 +16,6 @@ const config = {
 
     }),
     prerender: {
-      concurrency: 1,
-      crawl: true,
       entries: ['*', '/', '/note', '/sound', '/stack', '/tutorial', '/samples']
     },
     paths: {
