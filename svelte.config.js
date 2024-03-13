@@ -16,7 +16,7 @@ const config = {
 
     }),
     prerender: {
-      entries: ['*', '/', '/note', '/sound', '/stack', '/pingpong', '/samples']
+      entries: ['*', '/', '/note', '/sound', '/stack', '/ping_pong', '/samples']
     },
     paths: {
       base: process.env.NODE_ENV === "production" ? "/strudelcourse" : "",
