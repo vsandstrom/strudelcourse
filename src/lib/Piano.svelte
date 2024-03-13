@@ -253,7 +253,6 @@
   /* padding: 2em 0.9em; */
   background-color: black;
   color: white;
-
 }
 
 .blank {

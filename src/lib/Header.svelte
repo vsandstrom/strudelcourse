@@ -1,13 +1,14 @@
 <script>
+  import {base} from '$app/paths';
 </script>
 
 <section id="header">
-  <a href="/">HOME</a>
-  <a href="/sound">sound()</a>
-  <a href="/note">note()</a>
-  <a href="/stack">stack()</a>
-  <a href="/samples">samples()</a>
-  <a href="/ping_pong">ping pong</a>
+  <a href="{base}/">HOME</a>
+  <a href="{base}/sound">sound()</a>
+  <a href="{base}/note">note()</a>
+  <a href="{base}/stack">stack()</a>
+  <a href="{base}/samples">samples()</a>
+  <a href="{base}/ping_pong">ping pong</a>
 </section>
 
 <style>
