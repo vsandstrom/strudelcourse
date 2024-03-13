@@ -7,11 +7,7 @@
   let playing = Array.from({length:13}, (_, i) =>  false);
 
   type notes = "c" | "db" | "d" | "eb" | "e" | "f" | "gb" | "g" | "ab" | "a" | "bb" | "b" | "c2";
-  const blkkeys: string[] = ["db", "eb", "gb", "ab", "bb"];
-  const whtkeys: string[] = [ "c", "d", "e", "f", "g", "a", "b", "c2" ];
-
   const t = { "c": 0, "db":1, "d":2, "eb":3, "e":4, "f":5, "gb":6, "g":7, "ab":8, "a":9, "bb":10, "b":11, "c2":12, };
-  const c = { "c":"C", "db":"Db", "d":"D", "eb":"Eb", "e":"E", "f":"F", "gb":"Gb", "g":"G", "ab":"Ab", "a":"A", "bb":"Bb", "b":"B", "c2":"C"};
 
   const freq: number[] = [
     130.81, // C
@@ -29,14 +25,14 @@
     261.63  // C2 
   ];
   
-  let gainopt: GainOptions = {
-    gain: 0.0, 
-    channelCount: 1,
-    channelCountMode: "max",
-    channelInterpretation: "speakers"
-  };
   
   let g: GainNode[] = Array.from({length: 13}, (_, i) => {
+    let gainopt: GainOptions = {
+      gain: 0.0, 
+      channelCount: 1,
+      channelCountMode: "max",
+      channelInterpretation: "speakers"
+    };
     let node = new GainNode(ctx, gainopt);
     node.connect(out);
     return node;
@@ -52,7 +48,7 @@
     }
   );
 
-onMount(() => {
+  onMount(() => {
     const audiostarter = document.getElementById("audiobtn");
     audiostarter?.addEventListener("click", () => {
       if (ctx.state === "suspended") {
@@ -60,113 +56,113 @@ onMount(() => {
           console.log(ctx.state);
         });
       }
-    });
-  })
+    })
+  });
 
-
-const release = (g: GainNode, t: number, rel: number) => {
-  g.gain.cancelScheduledValues(t);
-  g.gain.linearRampToValueAtTime(0.0, t+rel);
-}
-
-const attack = (g: GainNode, t: number, curve: Float32Array, atk: number) => {
-  g.gain.cancelScheduledValues(t);
-  g.gain.setValueCurveAtTime(curve, t, atk);
-}
-
-const noteoff = (e: Event) => {
-  e.stopPropagation();
-  const el = e.target as HTMLElement;
-  let id = el.id;
-  if (!id) {
-    // @ts-ignore
-    id = el.parentNode?.parentElement?.id;
+  const getIndexOfKey = (key: string): number => {
+    switch (key) {
+      case "a": return 0;
+      case "w": return 1;
+      case "s": return 2; 
+      case "e": return 3; 
+      case "d": return 4; 
+      case "f": return 5;
+      case "t": return 6; 
+      case "g": return 7; 
+      case "y": return 8;
+      case "h": return 9;
+      case "u": return 10;
+      case "j": return 11;
+      case "k": return 12;
+      default: return -1;;
+    };
   }
-  g[t[id as notes]].gain.linearRampToValueAtTime(0.0, ctx.currentTime+0.4);
-};
 
-const noteon = (e: Event) => {
-  e.stopPropagation();
-  const el = e.target as HTMLElement;
-  let id = el.id;
-  if (!id) {
-    // @ts-ignore
-    id = el.parentNode?.parentElement?.id;
+  const release = (g: GainNode, t: number, rel: number) => {
+    g.gain.cancelScheduledValues(t);
+    g.gain.linearRampToValueAtTime(0.0, t+rel);
   }
-  g[t[id as notes]].gain.linearRampToValueAtTime(0.4, ctx.currentTime+1);
-};
 
-const kbnoteon = (e: KeyboardEvent) => {
-  e.stopPropagation();
-  let time = ctx.currentTime;
-  let curve = new Float32Array([0.01, 0.4]);
-  let i = -1;
-  switch (e.key) {
-    case "a": i = 0; break;
-    case "w": i = 1; break;
-    case "s": i = 2; break; 
-    case "e": i = 3; break; 
-    case "d": i = 4; break; 
-    case "f": i = 5; break;
-    case "t": i = 6; break; 
-    case "g": i = 7; break; 
-    case "y": i = 8; break;
-    case "h": i = 9; break;
-    case "u": i = 10; break;
-    case "j": i = 11; break;
-    case "k": i = 12; break;
+  const attack = (g: GainNode, t: number, curve: Float32Array, atk: number) => {
+    g.gain.cancelScheduledValues(t);
+    g.gain.setValueCurveAtTime(curve, t, atk);
+  }
+
+  const noteoff = (e: Event) => {
+    e.stopPropagation();
+    const el = e.target as HTMLElement;
+    let id = el.id;
+    if (!id) {
+      // @ts-ignore
+      id = el.parentNode?.parentElement?.id;
+    }
+    let i = t[id as notes];
+    if (i >= 0) {
+      playing[i] = false;
+      release(g[i], ctx.currentTime, 0.4);
+      // g[t[id as notes]].gain.linearRampToValueAtTime(0.0, ctx.currentTime+0.4);
+    }
   };
-  if (!playing[i]) {
-    attack(g[i], time, curve, 0.1);
-    playing[i] = true;
-  }
-  console.log(e.key.toString());
-}
 
-const kbnoteoff = (e: KeyboardEvent) => {
-  e.stopPropagation();
-  let time = ctx.currentTime;
-  let i = -1;
-  switch (e.key) {
-    case "a": i = 0; break;
-    case "w": i = 1; break;
-    case "s": i = 2; break; 
-    case "e": i = 3; break; 
-    case "d": i = 4; break; 
-    case "f": i = 5; break;
-    case "t": i = 6; break; 
-    case "g": i = 7; break; 
-    case "y": i = 8; break;
-    case "h": i = 9; break;
-    case "u": i = 10; break;
-    case "j": i = 11; break;
-    case "k": i = 12; break;
+  const noteon = (e: Event) => {
+    e.stopPropagation();
+    const el = e.target as HTMLElement;
+    let id = el.id;
+    if (!id) {
+      // @ts-ignore
+      id = el.parentNode?.parentElement?.id;
+    }
+
+    let i = t[id as notes];
+    if (i >= 0) {
+      let curve = new Float32Array([0.01, 0.4]);
+      playing[i] = true;
+      attack(g[i], ctx.currentTime, curve, 0.1)
+      g[i].gain.linearRampToValueAtTime(0.4, ctx.currentTime+1);
+    }
   };
-  if (playing[i]) {
-    release(g[i], time, 0.4);
-    playing[i] = false;
-  }
-  console.log(e.key.toString());
-}
 
-const keyson = (e: Event & {currentTarget: EventTarget & HTMLInputElement}) => {
-  e.preventDefault();
-  let el = e.currentTarget;
-  if (el.checked){
-    document.addEventListener("keypress", kbnoteon);
-    document.addEventListener("keyup", kbnoteoff);
-  }else {
-    document.removeEventListener("keypress", kbnoteon);
-    document.removeEventListener("keyup", kbnoteoff);
+  const kbnoteon = (e: KeyboardEvent) => {
+    e.stopPropagation();
+    let i = getIndexOfKey(e.key);
+    if (i >= 0 && !playing[i]) {
+      let curve = new Float32Array([0.01, 0.4]);
+      attack(g[i], ctx.currentTime, curve, 0.1);
+      playing[i] = true;
+    }
+    console.log(e.key.toString());
   }
-};
+
+  const kbnoteoff = (e: KeyboardEvent) => {
+    e.stopPropagation();
+    let i = getIndexOfKey(e.key);
+    if (i >= 0 && playing[i]) {
+      release(g[i], ctx.currentTime, 0.8);
+      playing[i] = false;
+    }
+    console.log(e.key.toString());
+  }
+
+  const keyson = (e: Event & {currentTarget: EventTarget & HTMLInputElement}) => {
+    e.preventDefault();
+    let el = e.currentTarget;
+    if (el.checked){
+      document.addEventListener("keypress", kbnoteon);
+      document.addEventListener("keyup", kbnoteoff);
+    }else {
+      document.removeEventListener("keypress", kbnoteon);
+      document.removeEventListener("keyup", kbnoteoff);
+    }
+  };
 
 </script>
 
 <div>
   <div class="piano">
     <div class="key-row" id="black">
+      <!-- OFFSET WITHIN THE PIANOS BLACK KEYS -->
       <div class="blank"> </div>
+
       {#each [
       {id: "db", text: "C# Db"}, 
       {id: "eb", text: "D# Eb"}] as bk}
@@ -182,6 +178,7 @@ const keyson = (e: Event & {currentTarget: EventTarget & HTMLInputElement}) => {
       </div>
       {/each}
 
+      <!-- SPACING WITHIN THE PIANOS BLACK KEYS -->
       <div class="blank gap"> </div>
 
       {#each [
@@ -200,6 +197,7 @@ const keyson = (e: Event & {currentTarget: EventTarget & HTMLInputElement}) => {
       </div>
       {/each}
 
+      <!-- OFFSET WITHIN THE PIANOS BLACK KEYS -->
       <div class="blank"> </div>
     </div>
 
@@ -214,7 +212,7 @@ const keyson = (e: Event & {currentTarget: EventTarget & HTMLInputElement}) => {
       {id: "b", text: "B"}, 
       {id: "c2", text: "C"}] as wt}
       <div class="key" id={wt.id} 
-        on:mousepressed={noteon} 
+        on:mousedown={noteon} 
         on:mouseup={noteoff}
         on:mouseleave={noteoff}>
         <b><p
