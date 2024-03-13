@@ -8,9 +8,9 @@
 
 <div>
   <Header />
-  <h3 class="pagetitle">SOUND(  )</h3>
+  <h3 class="pagetitle" id="sound">SOUND(  )</h3>
   <div class="links">
-    <a href="#concepts">Concepts</a>
+    <a href="#vocabulary">Vocabulary</a>
     <a href="#drums">Drum cheat-sheet</a>
   </div>
   <div class="links examples">
@@ -19,7 +19,6 @@
     <a href="#sound2">2</a>
     <a href="#sound3">3</a>
     <a href="#sound4">4</a>
-    <a href="#sound5">5</a>
   </div>
 
 
@@ -85,6 +84,13 @@
       will play within the time it takes for one sound outside the <b>[  ]</b>
       to play.
     </p>
+    <p id="sound2-3">
+      The <b>.gain( )</b> command on the end of the line is a useful command. It
+      is used to ajust the volume of what is playing. The regular value, the one
+      that is on by default, is <b>1</b>. If you set the gain to <b>0.5</b>,
+      that is the half of the volume, and set to <b>2</b> we double the volume.
+      With the gain set to <b>0.0</b> makes it silent.
+    </p>
   </div>
   <Strudel title="sound()" url={examples[1]} />
 
@@ -105,51 +111,29 @@
       close to the name of a sound, it tells the sound to play that many times
       during its normal duration.
     </p>
+    <p id="sound4-2">
+      To help visualize this, there is a tool called <b>{".pianoroll( )"}</b> that we
+      can use. It makes a graphical representation of the sounds, and it is more
+      easy to see what each of the different sound are doing. It is special in
+      that you need to write <b>{".pianoroll({fold: 1})"}</b> to make it work.
+    </p>
   </div>
   <Strudel title="sound()" url={examples[3]} height={320} />
 
-  <div id="sound5">
-    <p>
-      5. Just for fun, here is a strudel-program using all of the above
-      techniques to make a drum beat. It contains 5 different examples 
-      which takes the previous example and adds something to it. 
-      To run each example, remove the <b>'//'</b> in front of each row of
-      text.
-    </p>
-      <ol>
-        <li>
-          The first example plays 4 <b>B</b>ass<b>D</b>rums.
-        </li>
-        <li>
-          The second uses sub-patterns to play a <b>B</b>ass<b>D</b>rum 
-          and a <b>S</b>nare<b>D</b>rum at the same time.
-        </li>
-        <li>
-          Adding <b>H</b>i<b>H</b>ats between the other drums from the above
-          example.
-        </li>
-        <li>
-          Adding even more <b>H</b>i<b>H</b>ats, now using sub-patterns to 
-          play at the same time as the <b>B</b>ass<b>D</b>rum 
-          <b>S</b>nare<b>D</b>rum.
-        </li>
-        <li>
-          This last example is the most complex, repeating some drums with the 
-          <b>'*'</b>, and even making sub-patterns WITHIN sub-patterns! 
-        </li>
-      </ol>
-      <p>
-          The possibilities are endless!
-      </p>
-  </div>
-  <Strudel title="sound()" url={examples[4]} height={800} />
-
   <h3>Vocabulary:</h3>
-  <div id="concepts">
+  <div id="vocabulary">
     <h4>Commands:</h4>
-      <ul><li>
-        <b>sound()</b> - the command we run to use sub-pattern
-      </li></ul>
+    <ul>
+      <li>
+        <b><a href="#sound">sound( )</a></b> - the command we run to play sounds.
+      </li>
+      <li>
+        <b><a href="#sound2-3">gain( )</a></b> - the volume command. 
+      </li>
+      <li>
+        <b><a href="#sound4-2">{"pianoroll( )"}</a></b> - visualize the patterns.
+      </li>
+    </ul>
     <h4>Syntax:</h4>
     <ol>
       <li> <b><a href="#sound1">" "</a></b> - grouping sounds into a pattern. </li>
@@ -165,7 +149,7 @@
   margin-left: 0;
 } 
 
-#concepts {
+#vocabulary {
   margin-left: 1.5em;
 }
 

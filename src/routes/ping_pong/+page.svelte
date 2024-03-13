@@ -3,7 +3,7 @@
   import Header from "$lib/Header.svelte";
   import data from "$lib/strudel.json";
   type Strdata = typeof data;
-  const examples = data["sound"];
+  const examples = data["pingpong"];
 </script>
 
 <div>
@@ -53,7 +53,7 @@
           The possibilities are endless!
       </p>
   </div>
-  <Strudel title="sound()" url={examples[4]} height={800} />
+  <Strudel title="sound()" url={examples[0]} height={800} />
 
   <!-- <h3>Vocabulary:</h3> -->
   <!-- <div id="concepts"> -->
