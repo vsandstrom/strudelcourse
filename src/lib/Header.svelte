@@ -7,6 +7,7 @@
   <a href="/note">note()</a>
   <a href="/stack">stack()</a>
   <a href="/samples">samples()</a>
+  <a href="/ping_pong">ping pong</a>
 </section>
 
 <style>
