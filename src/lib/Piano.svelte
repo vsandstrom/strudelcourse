@@ -2,9 +2,6 @@
   import {onMount} from 'svelte';
   export let ctx: AudioContext;
   let out = ctx.destination;
-  let keyarr: Array<Element>;
-
-
   type notes = "c" | "db" | "d" | "eb" | "e" | "f" | "gb" | "g" | "ab" | "a" | "bb" | "b" | "c2";
   const blkkeys: string[] = ["db", "eb", "gb", "ab", "bb"];
   const whtkeys: string[] = [ "c", "d", "e", "f", "g", "a", "b", "c2" ];
@@ -70,7 +67,7 @@ const noteoff = (e: Event) => {
     // @ts-ignore
     id = el.parentNode?.parentElement?.id;
   }
-  g[t[id as notes]].gain.setValueAtTime(0.0, ctx.currentTime);
+  g[t[id as notes]].gain.linearRampToValueAtTime(0.0, ctx.currentTime+0.4);
 };
 
 const noteon = (e: Event) => {
@@ -81,51 +78,77 @@ const noteon = (e: Event) => {
     // @ts-ignore
     id = el.parentNode?.parentElement?.id;
   }
-  g[t[id as notes]].gain.setValueAtTime(0.4, ctx.currentTime);
+  g[t[id as notes]].gain.linearRampToValueAtTime(0.4, ctx.currentTime+1);
 };
 
 const kbnoteon = (e: KeyboardEvent) => {
   e.stopPropagation();
+  let time = ctx.currentTime;
+  let curve = new Float32Array([0.01, 0.4]);
   switch (e.key) {
-    case "a": g[ 0].gain.setValueAtTime(0.3, ctx.currentTime); break;
-    case "w": g[ 1].gain.setValueAtTime(0.3, ctx.currentTime); break;
-    case "s": g[ 2].gain.setValueAtTime(0.3, ctx.currentTime); break;
-    case "e": g[ 3].gain.setValueAtTime(0.3, ctx.currentTime); break;
-    case "d": g[ 4].gain.setValueAtTime(0.3, ctx.currentTime); break;
-    case "f": g[ 5].gain.setValueAtTime(0.3, ctx.currentTime); break;
-    case "t": g[ 6].gain.setValueAtTime(0.3, ctx.currentTime); break;
-    case "g": g[ 7].gain.setValueAtTime(0.3, ctx.currentTime); break;
-    case "y": g[ 8].gain.setValueAtTime(0.3, ctx.currentTime); break;
-    case "h": g[ 9].gain.setValueAtTime(0.3, ctx.currentTime); break;
-    case "u": g[10].gain.setValueAtTime(0.3, ctx.currentTime); break;
-    case "j": g[11].gain.setValueAtTime(0.3, ctx.currentTime); break;
-    case "k": g[12].gain.setValueAtTime(0.3, ctx.currentTime); break;
+    case "a": g[ 0].gain.setValueCurveAtTime(curve, time, 0.4); break;
+    case "w": g[ 1].gain.setValueCurveAtTime(curve, time, 0.4); break;
+    case "s": g[ 2].gain.setValueCurveAtTime(curve, time, 0.4); break;
+    case "e": g[ 3].gain.setValueCurveAtTime(curve, time, 0.4); break;
+    case "d": g[ 4].gain.setValueCurveAtTime(curve, time, 0.4); break;
+    case "f": g[ 5].gain.setValueCurveAtTime(curve, time, 0.4); break;
+    case "t": g[ 6].gain.setValueCurveAtTime(curve, time, 0.4); break;
+    case "g": g[ 7].gain.setValueCurveAtTime(curve, time, 0.4); break;
+    case "y": g[ 8].gain.setValueCurveAtTime(curve, time, 0.4); break;
+    case "h": g[ 9].gain.setValueCurveAtTime(curve, time, 0.4); break;
+    case "u": g[10].gain.setValueCurveAtTime(curve, time, 0.4); break;
+    case "j": g[11].gain.setValueCurveAtTime(curve, time, 0.4); break;
+    case "k": g[12].gain.setValueCurveAtTime(curve, time, 0.4); break;
   };
   console.log(e.key.toString());
 }
 
 const kbnoteoff = (e: KeyboardEvent) => {
   e.stopPropagation();
+  let time = ctx.currentTime;
   switch (e.key) {
-    case "a": g[0 ].gain.setValueAtTime(0.0, ctx.currentTime); break;
-    case "w": g[1 ].gain.setValueAtTime(0.0, ctx.currentTime); break;
-    case "s": g[2 ].gain.setValueAtTime(0.0, ctx.currentTime); break;
-    case "e": g[3 ].gain.setValueAtTime(0.0, ctx.currentTime); break;
-    case "d": g[4 ].gain.setValueAtTime(0.0, ctx.currentTime); break;
-    case "f": g[5 ].gain.setValueAtTime(0.0, ctx.currentTime); break;
-    case "t": g[6 ].gain.setValueAtTime(0.0, ctx.currentTime); break;
-    case "g": g[7 ].gain.setValueAtTime(0.0, ctx.currentTime); break;
-    case "y": g[8 ].gain.setValueAtTime(0.0, ctx.currentTime); break;
-    case "h": g[9 ].gain.setValueAtTime(0.0, ctx.currentTime); break;
-    case "u": g[10].gain.setValueAtTime(0.0, ctx.currentTime); break;
-    case "j": g[11].gain.setValueAtTime(0.0, ctx.currentTime); break;
-    case "k": g[12].gain.setValueAtTime(0.0, ctx.currentTime); break;
+    case "a": g[0 ].gain.cancelScheduledValues(time)
+                        .linearRampToValueAtTime(0.0, time+0.4); break;
+    case "w": g[1 ].gain.cancelScheduledValues(time)
+                        .linearRampToValueAtTime(0.0, time+0.4); break;
+    case "s": g[2 ].gain.cancelScheduledValues(time)
+                        .linearRampToValueAtTime(0.0, time+0.4); break;
+    case "e": g[3 ].gain.cancelScheduledValues(time)
+                        .linearRampToValueAtTime(0.0, time+0.4); break;
+    case "d": g[4 ].gain.cancelScheduledValues(time)
+                        .linearRampToValueAtTime(0.0, time+0.4); break;
+    case "f": g[5 ].gain.cancelScheduledValues(time)
+                        .linearRampToValueAtTime(0.0, time+0.4); break;
+    case "t": g[6 ].gain.cancelScheduledValues(time)
+                        .linearRampToValueAtTime(0.0, time+0.4); break;
+    case "g": g[7 ].gain.cancelScheduledValues(time)
+                        .linearRampToValueAtTime(0.0, time+0.4); break;
+    case "y": g[8 ].gain.cancelScheduledValues(time)
+                        .linearRampToValueAtTime(0.0, time+0.4); break;
+    case "h": g[9 ].gain.cancelScheduledValues(time)
+                        .linearRampToValueAtTime(0.0, time+0.4); break;
+    case "u": g[10].gain.cancelScheduledValues(time)
+                        .linearRampToValueAtTime(0.0, time+0.4); break;
+    case "j": g[11].gain.cancelScheduledValues(time)
+                        .linearRampToValueAtTime(0.0, time+0.4); break;
+    case "k": g[12].gain.cancelScheduledValues(time)
+                        .linearRampToValueAtTime(0.0, time+0.4); break;
   };
   console.log(e.key.toString());
 }
 
-document.addEventListener("keydown", kbnoteon);
-document.addEventListener("keyup", kbnoteoff);
+const keyson = (e: Event & {currentTarget: EventTarget & HTMLInputElement}) => {
+  e.preventDefault();
+  let el = e.currentTarget;
+
+  if (el.checked){
+    document.addEventListener("keypress", kbnoteon);
+    document.addEventListener("keyup", kbnoteoff);
+  }else {
+    document.removeEventListener("keypress", kbnoteon);
+    document.removeEventListener("keyup", kbnoteoff);
+  }
+};
 
 </script>
 
@@ -179,22 +202,22 @@ document.addEventListener("keyup", kbnoteoff);
       {id: "a", text: "A"},
       {id: "b", text: "B"}, 
       {id: "c2", text: "C"}] as wt}
-        <div class="key" id={wt.id} 
-          on:mousedown={noteon} 
-          on:mouseup={noteoff}
-          on:mouseleave={noteoff}>
-          <b><p
-          on:mousedown={noteon} 
-          on:mouseup={noteoff}
-          on:mouseleave={noteoff}>
-          {wt.text}</p></b> 
-        </div> 
+      <div class="key" id={wt.id} 
+        on:mousepressed={noteon} 
+        on:mouseup={noteoff}
+        on:mouseleave={noteoff}>
+        <b><p
+        on:mousedown={noteon} 
+        on:mouseup={noteoff}
+        on:mouseleave={noteoff}>
+        {wt.text}</p></b> 
+      </div> 
       {/each}
-
     </div>
   </div>
   <div class="audioctl">
     <button id="audiobtn"></button>
+    <input type="checkbox" on:change={keyson} name="keyboardon" id="kbbtn">
   </div>
 </div>
 
@@ -210,6 +233,7 @@ document.addEventListener("keyup", kbnoteoff);
   height: 8.5em;
   width: 5em;
   text-align: center;
+  user-select: none;
   align-content: center;
   justify-content: center;
   border-radius: 14px;
@@ -233,7 +257,7 @@ document.addEventListener("keyup", kbnoteoff);
 
 .audioctl{
   width: 20%;
+  height: 30px;
 }
-
 
 </style>

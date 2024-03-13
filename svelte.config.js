@@ -15,6 +15,11 @@ const config = {
       fallback: "200.html"
 
     }),
+    prerender: {
+      concurrency: 1,
+      crawl: true,
+      entries: ['*', '/', '/note', '/sound', '/stack', '/tutorial', '/samples']
+    },
     paths: {
       base: process.env.NODE_ENV === "production" ? "/strudelcourse" : "",
     }
