@@ -15,9 +15,9 @@ const config = {
       fallback: "200.html"
 
     }),
-    // prerender: {
-    //   entries: ['*', '/', '/note', '/sound', '/stack', '/tutorial', '/samples']
-    // },
+    prerender: {
+      entries: ['*', '/', '/note', '/sound', '/stack', '/pingpong', '/samples']
+    },
     paths: {
       base: process.env.NODE_ENV === "production" ? "/strudelcourse" : "",
     }
