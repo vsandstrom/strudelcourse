@@ -81,7 +81,9 @@
   />
 
   <div id="note3">
-  <p>3.</p>
+  <p>
+    3. As you saw from the previous example, the length of the 
+  </p>
   </div>
   <Strudel 
     title="note()" 
