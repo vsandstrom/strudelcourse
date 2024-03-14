@@ -11,6 +11,9 @@
   const idx: notes[] = ["c","db","d","eb", "e", "f", "gb", "g", "ab", "a", "bb", "b", "c2"];
   const playing = Array.from({length:13}, (_, i) =>  false);
 
+  const atktime = 0.1;
+  const reltime = 0.2;
+
   const freq: number[] = [
     130.81, // C
     138.59, // Db 
@@ -96,9 +99,6 @@
       case 11: return "b";
       case 12: return "c2";
     }
-    
-    
-
   }
 
   const release = (g: GainNode, t: number, rel: number) => {
@@ -141,7 +141,7 @@
     let i = t[id as notes];
     if (i >= 0) {
       playing[i] = false;
-      release(g[i], ctx.currentTime, 0.4);
+      release(g[i], ctx.currentTime, reltime);
       // g[t[id as notes]].gain.linearRampToValueAtTime(0.0, ctx.currentTime+0.4);
       console.log("note off: ", id);
     }
@@ -160,7 +160,7 @@
     if (i >= 0) {
       let curve = new Float32Array([0.01, 0.4]);
       playing[i] = true;
-      attack(g[i], ctx.currentTime, curve, 0.1)
+      attack(g[i], ctx.currentTime, curve, atktime)
       // g[i].gain.linearRampToValueAtTime(0.4, ctx.currentTime+1);
       console.log("note on: ", id);
     }
@@ -174,7 +174,7 @@
     if (i >= 0 && !playing[i]) {
       active(id);
       let curve = new Float32Array([0.01, 0.4]);
-      attack(g[i], ctx.currentTime, curve, 0.1);
+      attack(g[i], ctx.currentTime, curve, atktime);
       playing[i] = true;
     }
     console.log("note on: ", id);
@@ -186,7 +186,7 @@
     const id = idx[i];
     if (i >= 0 && playing[i]) {
       idle(id);
-      release(g[i], ctx.currentTime, 0.8);
+      release(g[i], ctx.currentTime, reltime);
       playing[i] = false;
     }
     console.log("note off: " + id);
