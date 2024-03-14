@@ -1,4 +1,5 @@
 <script lang="ts">
+  import {base} from '$app/paths';
 	import Header from "$lib/Header.svelte";
   import Strudel from "$lib/Strudel.svelte";
   import Piano from "$lib/Piano.svelte";
@@ -133,7 +134,7 @@
       <i>[ fast(2) = double the speed  ]</i>
       </li>
       <li> 
-        <b><a href="/sound">.sound( )</a></b> - allows you to change the
+        <b><a href="{base}/sound">.sound( )</a></b> - allows you to change the
       sound of the notes playing. This is the same command as last lesson, but
       it can be used in combination with <b>note( )</b>.
       </li>
