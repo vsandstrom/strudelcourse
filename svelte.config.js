@@ -14,6 +14,7 @@ const config = {
     adapter: adapter({
       strict:false,
       fallback: "404.html",
+      pages: "build"
     }),
     prerender: {
       entries: [
@@ -28,7 +29,7 @@ const config = {
       ]
     },
     paths: {
-      base: process.env.NODE_ENV === "production" ? "/strudelcourse" : "",
+      base: process.env.NODE_ENV === "production" ? "/strudelcourse/build" : "",
     }
 	}
 };

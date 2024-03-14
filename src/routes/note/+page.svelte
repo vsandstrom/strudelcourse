@@ -101,17 +101,32 @@
   <p>
     3. As you saw from the previous example, the length of the program can get
     quite long when you keep on writing on the same line. Fortunatly the people
-    who made Strudel has thought about this. Below you see three lines, but the
-    commands on line 2 and three are connected to line 1 through the dot.
+    who made Strudel has thought about this. Below you see three lines, and some
+    commands on the following lines. This is called "chaining", and you can
+    chain some commands together even over several lines.
   </p>
+  <p>
+    There is also a new command, the <b>.color( )</b> command. It makes the
+    <b>.pianoroll( )</b> command change color of the notes. Write the name of a
+    color within <b>" "</b> in the <b>.color( )</b> command and the pianoroll
+    changes.
+  </p>
+
   </div>
   <Strudel 
     title="note()" 
     url={examples[2]}
+    height={360}
   />
 
   <div id="note4">
-  <p>4.</p>
+  <p>
+    4. Notice that the <b>sound( )</b> command has made a return. This time it
+    is written with a dot in front of it, telling us it is chained to the
+    <b>note( )</b> command. It makes us be able to change the sound of the notes
+    playing. There are a lot of built-in sounds that you can try out. This time
+    we chose <b>"gm_acoustic_guitar_nylon"</b>, the sound a guitar, obviously.
+  </p>
   </div>
   <Strudel 
     title="note()" 
