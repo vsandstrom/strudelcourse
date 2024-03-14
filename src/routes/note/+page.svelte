@@ -105,7 +105,7 @@
     commands on the following lines. This is called "chaining", and you can
     chain some commands together even over several lines.
   </p>
-  <p>
+  <p id="note3-2">
     There is also a new command, the <b>.color( )</b> command. It makes the
     <b>.pianoroll( )</b> command change color of the notes. Write the name of a
     color within <b>" "</b> in the <b>.color( )</b> command and the pianoroll
@@ -147,6 +147,9 @@
       <li> 
         <b><a href="#note1-3">.fast( )</a></b> - makes the pattern go faster.
       <i>[ fast(2) = double the speed  ]</i>
+      </li>
+      <li>
+        <b><a href="#note3-2">.color( )</a></b> - colors the pianoroll.
       </li>
       <li> 
         <b><a href="{base}/sound">.sound( )</a></b> - allows you to change the
