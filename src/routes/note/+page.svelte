@@ -20,7 +20,7 @@
   import data from "$lib/strudel.json";
   const examples = data["note"];
 
-  onMount(() => console.log(initCtx()));
+  onMount(() => initCtx());
 
 </script>
 
