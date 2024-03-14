@@ -1,13 +1,15 @@
 <script lang="ts">
   import {onMount} from 'svelte';
-	import type { Gain } from 'tone';
-  export let ctx: AudioContext;
-  let out = ctx.destination;
-
-  let playing = Array.from({length:13}, (_, i) =>  false);
+  import { type Writable } from 'svelte/store';
+  export let ctxstore: Writable<AudioContext|null>;
+  let ctx = $ctxstore!;
+  let out: AudioDestinationNode = ctx.destination; 
 
   type notes = "c" | "db" | "d" | "eb" | "e" | "f" | "gb" | "g" | "ab" | "a" | "bb" | "b" | "c2";
-  const t = { "c": 0, "db":1, "d":2, "eb":3, "e":4, "f":5, "gb":6, "g":7, "ab":8, "a":9, "bb":10, "b":11, "c2":12, };
+
+  const t = { "c": 0, "db":1, "d":2, "eb":3, "e":4, "f":5, "gb":6, "g":7, "ab":8, "a":9, "bb":10, "b":11, "c2":12 };
+  const idx: notes[] = ["c","db","d","eb", "e", "f", "gb", "g", "ab", "a", "bb", "b", "c2"];
+  const playing = Array.from({length:13}, (_, i) =>  false);
 
   const freq: number[] = [
     130.81, // C
@@ -78,14 +80,53 @@
     };
   }
 
+  const getNoteOfIdx = (i: number) => {
+    switch(i) {
+      case 0: return "c";
+      case 1: return "db";
+      case 2: return "d";
+      case 3: return "eb";
+      case 4: return "e";
+      case 5: return "f";
+      case 6: return "gb";
+      case 7: return "g";
+      case 8: return "ab";
+      case 9: return "a";
+      case 10: return "bb";
+      case 11: return "b";
+      case 12: return "c2";
+    }
+    
+    
+
+  }
+
   const release = (g: GainNode, t: number, rel: number) => {
-    g.gain.cancelScheduledValues(t);
+    // g.gain.cancelScheduledValues(t);
     g.gain.linearRampToValueAtTime(0.0, t+rel);
   }
 
   const attack = (g: GainNode, t: number, curve: Float32Array, atk: number) => {
     g.gain.cancelScheduledValues(t);
     g.gain.setValueCurveAtTime(curve, t, atk);
+  }
+
+  const active = (id: notes) => {
+    let node = document.getElementById(id);
+    if (node) {
+      node.style.backgroundColor = "lightblue";
+    }
+  }
+
+  const idle = (id: notes) => {
+    let node = document.getElementById(id);
+    if (node) {
+      if (["db", "eb", "gb", "ab", "bb"].includes(id)) {
+        node.style.backgroundColor = "black";
+      } else {
+        node.style.backgroundColor = "white";
+      }
+    }
   }
 
   const noteoff = (e: Event) => {
@@ -96,11 +137,13 @@
       // @ts-ignore
       id = el.parentNode?.parentElement?.id;
     }
+    idle(id as notes);
     let i = t[id as notes];
     if (i >= 0) {
       playing[i] = false;
       release(g[i], ctx.currentTime, 0.4);
       // g[t[id as notes]].gain.linearRampToValueAtTime(0.0, ctx.currentTime+0.4);
+      console.log("note off: ", id);
     }
   };
 
@@ -112,35 +155,41 @@
       // @ts-ignore
       id = el.parentNode?.parentElement?.id;
     }
-
+    active(id as notes);
     let i = t[id as notes];
     if (i >= 0) {
       let curve = new Float32Array([0.01, 0.4]);
       playing[i] = true;
       attack(g[i], ctx.currentTime, curve, 0.1)
-      g[i].gain.linearRampToValueAtTime(0.4, ctx.currentTime+1);
+      // g[i].gain.linearRampToValueAtTime(0.4, ctx.currentTime+1);
+      console.log("note on: ", id);
     }
   };
+
 
   const kbnoteon = (e: KeyboardEvent) => {
     e.stopPropagation();
     let i = getIndexOfKey(e.key);
+    const id = idx[i];
     if (i >= 0 && !playing[i]) {
+      active(id);
       let curve = new Float32Array([0.01, 0.4]);
       attack(g[i], ctx.currentTime, curve, 0.1);
       playing[i] = true;
     }
-    console.log(e.key.toString());
+    console.log("note on: ", id);
   }
 
   const kbnoteoff = (e: KeyboardEvent) => {
     e.stopPropagation();
     let i = getIndexOfKey(e.key);
+    const id = idx[i];
     if (i >= 0 && playing[i]) {
+      idle(id);
       release(g[i], ctx.currentTime, 0.8);
       playing[i] = false;
     }
-    console.log(e.key.toString());
+    console.log("note off: " + id);
   }
 
   const keyson = (e: Event & {currentTarget: EventTarget & HTMLInputElement}) => {
@@ -168,12 +217,11 @@
       {id: "eb", text: "D# Eb"}] as bk}
       <div class="key top" id={bk.id}
         on:mousedown={noteon} 
-        on:mouseup={noteoff}
-        on:mouseleave={noteoff}>
+        on:mouseup={noteoff}>
         <b><p
         on:mousedown={noteon} 
         on:mouseup={noteoff}
-        on:mouseleave={noteoff}>
+        >
         {bk.text}</p><b>
       </div>
       {/each}
@@ -187,12 +235,10 @@
       {id: "bb", text: "A# Bb"}] as bk}
       <div class="key top" id={bk.id}
         on:mousedown={noteon} 
-        on:mouseup={noteoff}
-        on:mouseleave={noteoff}>
+        on:mouseup={noteoff} >
         <b><p
         on:mousedown={noteon} 
-        on:mouseup={noteoff}
-        on:mouseleave={noteoff}>
+        on:mouseup={noteoff} >
         {bk.text}</p><b>
       </div>
       {/each}
@@ -213,20 +259,23 @@
       {id: "c2", text: "C"}] as wt}
       <div class="key" id={wt.id} 
         on:mousedown={noteon} 
-        on:mouseup={noteoff}
-        on:mouseleave={noteoff}>
+        on:mouseup={noteoff} >
         <b><p
         on:mousedown={noteon} 
-        on:mouseup={noteoff}
-        on:mouseleave={noteoff}>
+        on:mouseup={noteoff}>
         {wt.text}</p></b> 
       </div> 
       {/each}
     </div>
   </div>
   <div class="audioctl">
-    <button id="audiobtn"></button>
-    <input type="checkbox" on:change={keyson} name="keyboardon" id="kbbtn">
+    <div>
+    <button id="audiobtn">Start Audio</button>
+    </div>
+    <div>
+      Keyboard Playing
+      <input type="checkbox" on:change={keyson} name="keyboardon" id="kbbtn">
+    </div>
   </div>
 </div>
 
@@ -264,8 +313,12 @@
 }
 
 .audioctl{
-  width: 20%;
+  display: flex;
+  /* flex-direction: row; */
+  margin-top: 1em;
+  width: 100%;
   height: 30px;
+  gap: 2em;
 }
 
 </style>

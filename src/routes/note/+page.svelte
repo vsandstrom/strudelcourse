@@ -2,12 +2,25 @@
 	import Header from "$lib/Header.svelte";
   import Strudel from "$lib/Strudel.svelte";
   import Piano from "$lib/Piano.svelte";
+  import {onMount} from 'svelte';
+  import { writable } from 'svelte/store';
+  import { type Writable } from 'svelte/store';
+
+  let ctxstore: Writable<AudioContext | null> = writable(null);
+
+
+  const initCtx = () => {
+    const AudioContext = window.AudioContext;
+    let ctx = new AudioContext();
+    ctxstore.set(ctx);
+    return ctxstore;
+  }
 
   import data from "$lib/strudel.json";
   const examples = data["note"];
-  
-  const AudioContext = window.AudioContext;
-  const ctx = new AudioContext();
+
+  onMount(() => console.log(initCtx()));
+
 </script>
 
 <div>
@@ -56,7 +69,10 @@
       button below that makes you be able to play it *like a piano* with your
       computer keys.
     </p>
-    <Piano ctx={ctx}/>
+    <!-- svelte-ignore will be init -->
+    {#if $ctxstore}
+      <Piano ctxstore={ctxstore} />
+    {/if}
   </div>
 
   <div id="note2">
@@ -82,7 +98,10 @@
 
   <div id="note3">
   <p>
-    3. As you saw from the previous example, the length of the 
+    3. As you saw from the previous example, the length of the program can get
+    quite long when you keep on writing on the same line. Fortunatly the people
+    who made Strudel has thought about this. Below you see three lines, but the
+    commands on line 2 and three are connected to line 1 through the dot.
   </p>
   </div>
   <Strudel 
