@@ -9,6 +9,9 @@
 
   let ctxstore: Writable<AudioContext | null> = writable(null);
 
+  $: innerWidth = 0;
+  $: outerHeight = 0;
+
 
   const initCtx = () => {
     const AudioContext = window.AudioContext;
@@ -18,18 +21,19 @@
   }
 
   import data from "$lib/strudel.json";
+	import Page from '../+page.svelte';
   const examples = data["note"];
 
   onMount(() => initCtx());
-
 </script>
+
+<svelte:window bind:innerWidth bind:outerHeight />
 
 <div>
   <Header />
   <h3 class="pagetitle" id="note">NOTE(  )</h3>
   <div class="links">
     <a href="#vocabulary">Vocabulary</a>
-    <a href="#piano">Piano keys</a>
   </div>
   <div class="links examples">
     Examples: 
@@ -71,8 +75,12 @@
       computer keys.
     </p>
     <!-- svelte-ignore will be init -->
-    {#if $ctxstore}
+    {#if $ctxstore && innerWidth > 1000}
       <Piano ctxstore={ctxstore} />
+    {:else}
+      <p>
+        <b>[ Put browser in fullscreen mode to view piano ]</b>
+      </p>
     {/if}
   </div>
 
@@ -125,7 +133,8 @@
     is written with a dot in front of it, telling us it is chained to the
     <b>note( )</b> command. It makes us be able to change the sound of the notes
     playing. There are a lot of built-in sounds that you can try out. This time
-    we chose <b>"gm_acoustic_guitar_nylon"</b>, the sound a guitar, obviously.
+    we chose <b>"gm_acoustic_guitar_nylon"</b>, the sound of a guitar, 
+    obviously.
   </p>
   </div>
   <Strudel 
@@ -179,24 +188,6 @@
 
 ol > li {
   margin-bottom: 0.6em;
-}
-
-table {
-  width: 80%;
-  margin: 3em 2em 4em 2em;
-}
-
-th {
-  text-align: left;
-  font-size: 1.2em;
-  border-bottom:groove;
-  padding: 0.4em 0;
-  margin-left: -0.2em;
-}
-
-td:last-child {
-  font-weight:bold;
-  
 }
 
 .links {

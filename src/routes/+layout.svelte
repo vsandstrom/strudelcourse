@@ -46,4 +46,27 @@
 			padding: 12px 0;
 		}
 	}
+
+  .pagetitle {
+    margin-left: 0;
+  } 
+
+  #vocabulary {
+    margin-left: 1.5em;
+  }
+
+  ol > li {
+    margin-bottom: 0.6em;
+  }
+
+  .links {
+    display: flex;
+    gap: 1.2em;
+    margin-left: 0em;
+  }
+
+  .examples {
+    margin-top: 1em;
+    margin-bottom: 2em;
+  }
 </style>
