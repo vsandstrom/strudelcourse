@@ -50,6 +50,7 @@
   </div>
   <Strudel title="sound()" url={examples[0]} height={800} />
 
+
   <h3>Vocabulary:</h3>
   <div id="vocabulary">
     <h4>Commands:</h4>
