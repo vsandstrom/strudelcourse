@@ -14,15 +14,26 @@
   <div class="links examples">
     Examples: 
     <a href="#stack1">1</a>
-    <a href="#stack2">2</a>
-    <a href="#stack3">3</a>
-    <a href="#stack4">4</a>
   </div>
 
+  <div id="stack1">
+    <p>
+    </p>
+  </div>
   <Strudel 
     title="stack()"
     url={examples[0]}
   />
+  
+  <h3>Vocabulary:</h3>
+  <div id="vocabulary">
+    <h4>Commands:</h4>
+      <ul>
+      </ul>
+    <h4>Syntax:</h4>
+    <ol>
+    </ol>
+  </div>
 </div>
 
 <style>

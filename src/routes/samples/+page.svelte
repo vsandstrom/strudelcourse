@@ -2,7 +2,7 @@
   import Strudel from "$lib/Strudel.svelte";
   import Header from "$lib/Header.svelte";
   import data from "$lib/strudel.json";
-  const examples = data["note"];
+  const examples = data["samples"];
 </script>
 
 <div>
@@ -10,21 +10,30 @@
   <h3 class="pagetitle">SAMPLES( )</h3>
   <div class="links">
     <a href="#vocabulary">Vocabulary</a>
-    <a href="#piano">Piano keys</a>
   </div>
   <div class="links examples">
     Examples: 
-    <a href="#note1">1</a>
-    <a href="#note2">2</a>
-    <a href="#note3">3</a>
-    <a href="#note4">4</a>
+    <a href="#samples1">1</a>
   </div>
 
-
+  <div id="samples1">
+    <p>
+    </p>
+  </div>
   <Strudel 
-    title="stack()" 
+    title="samples()" 
     url={examples[0]}
   />
+
+  <h3>Vocabulary:</h3>
+  <div id="vocabulary">
+    <h4>Commands:</h4>
+      <ul>
+      </ul>
+    <h4>Syntax:</h4>
+    <ol>
+    </ol>
+  </div>
 </div>
 
 <style>

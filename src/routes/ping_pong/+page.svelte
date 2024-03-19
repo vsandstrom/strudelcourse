@@ -10,19 +10,14 @@
   <Header />
   <h3 class="pagetitle">PING PONG</h3>
   <div class="links">
-    <!-- <a href="#concepts">Concepts</a> -->
-    <!-- <a href="#drums">Drum cheat-sheet</a> -->
+    <a href="#vocabulary">Vocabulary</a>
   </div>
   <div class="links examples">
-    <!-- Examples:  -->
-    <!-- <a href="#sound1">1</a> -->
-    <!-- <a href="#sound2">2</a> -->
-    <!-- <a href="#sound3">3</a> -->
-    <!-- <a href="#sound4">4</a> -->
-    <!-- <a href="#sound5">5</a> -->
+    Examples: 
+    <a href="#pingpong1">1</a>
   </div>
 
-  <div id="sound5">
+  <div id="pingpong1">
     <p>
       5. Just for fun, here is a strudel-program using all of the techniques we
       learned at the "sound( )"-page. It contains 5 different examples which takes the previous example and adds something to it. To run each example, remove the <b>'//'</b> in front of each row of text.
@@ -55,20 +50,15 @@
   </div>
   <Strudel title="sound()" url={examples[0]} height={800} />
 
-  <!-- <h3>Vocabulary:</h3> -->
-  <!-- <div id="concepts"> -->
-  <!--   <h4>Commands:</h4> -->
-  <!--     <ul><li> -->
-  <!--       <b>sound()</b> - the command we run to use sub-pattern -->
-  <!--     </li></ul> -->
-  <!--   <h4>Syntax:</h4> -->
-  <!--   <ol> -->
-  <!--     <li> <b><a href="#sound1">" "</a></b> - grouping sounds into a pattern. </li> -->
-  <!--     <li> <b><a href="#sound2-2">[ ]</a></b> - grouping sounds into a sub-pattern. </li> -->
-  <!--     <li> <b><a href="#sound3">,</a></b> - allowing sounds to be played simultaneously </li> -->
-  <!--     <li> <b><a href="#sound4">*</a></b> - repeating a perticular sound (ex: "bd*4") </li> -->
-  <!--   </ol> -->
-  <!-- </div> -->
+  <h3>Vocabulary:</h3>
+  <div id="concepts">
+    <h4>Commands:</h4>
+      <ul>
+      </ul>
+    <h4>Syntax:</h4>
+      <ol>
+      </ol>
+  </div>
 </div>
 
 <style>
