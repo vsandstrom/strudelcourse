@@ -17,8 +17,8 @@ jobs:
       - name: Use Bun.js
         uses: oven-sh/setup-bun@v1
         with:
-          node-version: '14'
-
+          bun-version: "latest"
+      
       - name: Install Dependencies
         run: bun install
 
