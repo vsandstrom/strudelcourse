@@ -1,25 +1,25 @@
 <script lang="ts">
   import Strudel from "$lib/Strudel.svelte";
   import Header from "$lib/Header.svelte";
+  import SubHeader from "$lib/SubHeader.svelte";
+  import Vocabulary from "$lib/Vocabulary.svelte";
+
   import data from "$lib/strudel.json";
-  type Strdata = typeof data;
   const examples = data["pingpong"];
+  const voc = { cmd: [ ], stx: [ ] };
 </script>
 
 <div>
   <Header />
-  <h3 class="pagetitle">PING PONG</h3>
-  <div class="links">
-    <a href="#vocabulary">Vocabulary</a>
-  </div>
-  <div class="links examples">
-    Examples: 
-    <a href="#pingpong1">1</a>
-  </div>
+  <SubHeader 
+    pageid={"pingpong"}
+    numExamples={1}
+    extras={[]}
+  />
 
   <div id="pingpong1">
     <p>
-      5. Just for fun, here is a strudel-program using all of the techniques we
+      1. Just for fun, here is a strudel-program using all of the techniques we
       learned at the "sound( )"-page. It contains 5 different examples which takes the previous example and adds something to it. To run each example, remove the <b>'//'</b> in front of each row of text.
     </p>
       <ol>
@@ -50,30 +50,10 @@
   </div>
   <Strudel title="sound()" url={examples[0]} height={800} />
 
-  <h3>Vocabulary:</h3>
-  <div id="vocabulary">
-    <h4>Commands:</h4>
-      <ul>
-      </ul>
-    <h4>Syntax:</h4>
-      <ol>
-      </ol>
-  </div>
+  <Vocabulary commands={voc.cmd} syntaxes={voc.stx} />
 </div>
 
 <style>
-.pagetitle {
-  margin-left: 0;
-} 
-
-#concepts {
-  margin-left: 1.5em;
-}
-
-ol > li {
-  margin-bottom: 0.6em;
-}
-
 table {
   width: 80%;
   margin: 3em 2em 4em 2em;
@@ -90,17 +70,6 @@ th {
 td:last-child {
   font-weight:bold;
   
-}
-
-.links {
-  display: flex;
-  gap: 1.2em;
-  margin-left: 0em;
-}
-
-.examples {
-  margin-top: 1em;
-  margin-bottom: 2em;
 }
 
 </style>

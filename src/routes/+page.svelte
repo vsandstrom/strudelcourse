@@ -19,11 +19,8 @@
 <Header>
 </Header>
 
-<section>
-  <h1>Creative Coding!</h1>
-  <div>
-    
-  </div>
+<section class="welcome">
+  <h1>{"Welcome to Creative Coding!"}</h1>
 </section>
 
 <style>
@@ -46,6 +43,10 @@
 		height: 0;
 		padding: 0 0 calc(100% * 495 / 2048) 0;
 	}
+
+  .welcome h1 {
+    font-size: 4em;
+  }
 
 	.welcome img {
 		position: absolute;
