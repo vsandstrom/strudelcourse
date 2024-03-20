@@ -2,6 +2,8 @@
   export let title: string;
   export let url: string;
   export let height: number = 240;
+
+  console.log(`strudel example loaded: \n${url}`);
 </script>
 
 <div class="strudel">

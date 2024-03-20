@@ -1,6 +1,9 @@
 <script lang="ts">
   export let commands: {cmd: string, link: string, desc: string}[];
   export let syntaxes: {cmd: string, link: string, desc: string}[];
+
+console.log("vocabulary loaded")
+
 </script>
 
 <h3>Vocabulary</h3>

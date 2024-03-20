@@ -109,3 +109,7 @@ button:focus:not(:focus-visible) {
 .pagetitle {
   margin-bottom: 2em;
 }
+
+button {
+    border-radius: 15px;
+}

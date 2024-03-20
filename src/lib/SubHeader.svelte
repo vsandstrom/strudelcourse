@@ -15,6 +15,8 @@
     if (id == "tutorial") return "TUTORIAL";
     return `${id.toUpperCase()}(  )`;
   };
+
+  console.log(`subheader ${pageid} loaded`);
 </script>
   
 <h3 class="pagetitle" id={pageid}>{catchNonMethods(pageid)}</h3>

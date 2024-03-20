@@ -204,6 +204,8 @@
     }
   };
 
+  console.log("piano loaded")
+
 </script>
 
 <div>

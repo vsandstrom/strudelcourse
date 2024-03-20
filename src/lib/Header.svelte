@@ -1,5 +1,6 @@
-<script>
+<script lang="ts">
   import {base} from '$app/paths';
+  console.log("header loaded");
 </script>
 
 <section id="header">

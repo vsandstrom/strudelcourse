@@ -3,32 +3,34 @@
 
   const dp = "https://strudel.cc/EmuSP12/";
   const snds: {[key in drumtypes]: HTMLAudioElement} = {
-    bd: new Audio(`${dp}bd/Bassdrum-01.wav`),
-    sd: new Audio(`${dp}sd/Snaredrum-01.wav`),
+    bd:  new Audio(`${dp}bd/Bassdrum-01.wav`),
+    sd:  new Audio(`${dp}sd/Snaredrum-01.wav`),
     rim: new Audio(`${dp}rim/zRim Shot-01.wav`),
-    cp: new Audio(`${dp}cp/Clap.wav`),
-    hh: new Audio(`${dp}hh/Hat Closed-01.wav`),
-    oh: new Audio(`${dp}oh/Hhopen1.wav`),
-    cr: new Audio(`${dp}cr/Crash.wav`),
-    rd: new Audio(`${dp}rd/Ride.wav`),
-    lt: new Audio(`${dp}lt/Tom L-01.wav`),
-    mt: new Audio(`${dp}mt/Tom M-01.wav`),
-    ht: new Audio(`${dp}ht/Tom H-01.wav`),
-    cb: new Audio(`${dp}cb/Cowbell.wav`),
+    cp:  new Audio(`${dp}cp/Clap.wav`),
+    hh:  new Audio(`${dp}hh/Hat Closed-01.wav`),
+    oh:  new Audio(`${dp}oh/Hhopen1.wav`),
+    cr:  new Audio(`${dp}cr/Crash.wav`),
+    rd:  new Audio(`${dp}rd/Ride.wav`),
+    lt:  new Audio(`${dp}lt/Tom L-01.wav`),
+    mt:  new Audio(`${dp}mt/Tom M-01.wav`),
+    ht:  new Audio(`${dp}ht/Tom H-01.wav`),
+    cb:  new Audio(`${dp}cb/Cowbell.wav`),
   }
 
   const play = (e: MouseEvent) => {
-    console.log("I AM CLICKED!");
     let el = e.target as HTMLElement;
     snds[el.id as drumtypes].play();
   }
+
+  console.log("drum sheet loaded");
+
 </script>
 
 <table id="drums">
   <thead> 
     <tr>
       <th>Real drum names</th>
-      <th>Strudel short-hand</th>
+      <th>Strudel short-hand names</th>
     </tr> 
   </thead>
 
@@ -73,13 +75,13 @@
     <!-- </tr> -->
 
     <tr> 
-      <td><b>CR</b>ash</td>
+      <td><b>CR</b>ash Cymbal</td>
       <!-- <td>cr</td>  -->
       <td><button on:click={play} id="cr">cr</button></td>
     </tr>
 
     <tr> 
-      <td><b>R</b>i<b>D</b>e</td>
+      <td><b>R</b>i<b>D</b>e Cymbal</td>
       <!-- <td>rd</td>  -->
       <td><button on:click={play} id="rd">rd</button></td>
     </tr>
@@ -100,16 +102,11 @@
     </tr>
   </tbody>
 </table>
-<!-- <div class="audioctl"> -->
-<!--     <div> -->
-<!--     <button id="audiobtn">Start Audio</button> -->
-<!--     </div> -->
-<!-- </div> -->
 
 <style>
   table {
     width: 80%;
-    margin: 3em 2em 4em 2em;
+    margin: 3em 10% 4em 10%;
   }
 
   th {
@@ -130,6 +127,5 @@
     margin-right: 0.8em;
     max-width: 100%;
     min-width: calc(32% - 0.8em - 0.8em - 0.8em);
-
   }
 </style>
