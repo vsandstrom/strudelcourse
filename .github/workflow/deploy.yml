@@ -1,4 +1,3 @@
-
 name: Deploy SvelteKit to GitHub Pages
 
 on:
