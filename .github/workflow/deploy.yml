@@ -4,7 +4,7 @@ name: Deploy SvelteKit to GitHub Pages
 on:
   push:
     branches:
-      - main  # Change this to match your main branch name
+      - gh-pages  # Change this to match your main branch name
 
 jobs:
   deploy:
@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Use Bun.js
         uses: oven-sh/setup-bun@v1
@@ -20,13 +20,12 @@ jobs:
           bun-version: "latest"
       
       - name: Install Dependencies
-        run: bun install
-
-      - name: Build and Export
-        run: bun run build
+        run: |
+          bun install
+          bun run build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: main
-          folder: ./build
+          folder: build
