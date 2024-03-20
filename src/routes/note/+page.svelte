@@ -5,16 +5,12 @@
   import Vocabulary from '$lib/Vocabulary.svelte';
   import Strudel from "$lib/Strudel.svelte";
   import Piano from "$lib/Piano.svelte";
+
   import {onMount} from 'svelte';
   import { writable } from 'svelte/store';
   import { type Writable } from 'svelte/store';
 
   let ctxstore: Writable<AudioContext | null> = writable(null);
-
-  $: innerWidth = 0;
-  $: outerHeight = 0;
-
-
   const initCtx = () => {
     const AudioContext = window.AudioContext;
     let ctx = new AudioContext();
@@ -22,11 +18,13 @@
     return ctxstore;
   }
 
-  import data from "$lib/strudel.json";
-  const examples = data["note"];
-
   onMount(() => initCtx());
 
+  $: innerWidth = 0;
+  $: outerHeight = 0;
+
+  import data from "$lib/strudel.json";
+  const examples = data["note"];
 
   const voc = {
     cmd: [

@@ -1,12 +1,26 @@
 <script lang="ts">
   import Strudel from "$lib/Strudel.svelte";
   import Header from "$lib/Header.svelte";
-  import data from "$lib/strudel.json";
   import SubHeader from "$lib/SubHeader.svelte";
   import Vocabulary from "$lib/Vocabulary.svelte";
   import Drums from "$lib/Drums.svelte";
-  type Strdata = typeof data;
+
+  import {onMount} from 'svelte';
+  import { writable } from 'svelte/store';
+  import { type Writable } from 'svelte/store';
+
+  let ctxstore: Writable<AudioContext | null> = writable(null);
+  const initCtx = () => {
+    const AudioContext = window.AudioContext;
+    let ctx = new AudioContext();
+    ctxstore.set(ctx);
+    return ctxstore;
+  }
+
+  onMount(() => initCtx());
+  
   const examples = data["sound"];
+  import data from "$lib/strudel.json";
 
   const voc = {
     cmd: [
@@ -29,11 +43,14 @@
 
 <div>
   <Header />
+  {#if $ctxstore}
+
   <SubHeader 
     pageid={"sound"}
     numExamples={4}
     extras={[{id: "drums", content: "Drum cheat-sheet"}]}
   />
+  {/if}
 
   <div id="sound1">
     <p>
@@ -56,7 +73,9 @@
       These are common names for the different drums and cymbals of a drum kit:
     </p>
 
+{#if $ctxstore}
   <Drums />
+{/if}
 
     <p id="sound2-2">
       In this example we have added the brackets <b>([  ])</b>. They are used for
@@ -100,5 +119,7 @@
   </div>
   <Strudel title="sound()" url={examples[3]} height={320} />
 
-  <Vocabulary commands={voc.cmd} syntaxes={voc.stx} />
+  {#if $ctxstore}
+    <Vocabulary commands={voc.cmd} syntaxes={voc.stx} />
+  {/if}
 </div>
