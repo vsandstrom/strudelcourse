@@ -13,7 +13,7 @@
   const catchNonMethods = (id: string) => {
     if (id == "pingpong") return "PING PONG";
     if (id == "tutorial") return "TUTORIAL";
-    return `${id.toUpperCase()}(  )`;
+    return `${id.toUpperCase()}()`;
   };
 
   console.log(`subheader ${pageid} loaded`);
@@ -36,6 +36,8 @@
 <style>
   .pagetitle {
     margin-left: 0;
+    font-family: monospace;
+    font-size: 1.8em;
   } 
 
   .links {

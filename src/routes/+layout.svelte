@@ -69,4 +69,10 @@
     margin-top: 1em;
     margin-bottom: 2em;
   }
+
+  .cmd {
+    font-family: monospace;
+    font-size: 1.2em;
+  }
+
 </style>

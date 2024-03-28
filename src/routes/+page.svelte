@@ -1,6 +1,7 @@
-<script type="module">
+<script lang="ts" type="module">
   // import Strudel from "$lib/Strudel.svelte";
   import Header from "$lib/Header.svelte";
+  import ShortCut from "$lib/ShortCut.svelte";
 </script>
 
 
@@ -55,4 +56,5 @@
 		top: 0;
 		display: block;
 	}
+
 </style>

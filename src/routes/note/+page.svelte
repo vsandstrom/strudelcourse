@@ -29,18 +29,24 @@
   const voc = {
     cmd: [
       {cmd: "note()", link: "note", desc: "the command we use to program melodies."},
-      { cmd: ".slow( )", link: "note1-2", 
-        desc: "makes the pattern go slower. <i>[ slow(2) = half the speed ]</<"},
-      { cmd: ".fast( )", link: "note1-3", 
-        desc: "makes the pattern go faster. <i>[ fast(2) = double the speed ]</i>"},
-      { cmd: ".color( )", link: "note3-2", desc: "colors the pianoroll"}
+      { cmd: "stack()", link: "note4", desc: 
+        "lets you put several <b class=\"cmd\">note( )</b> and <b class=\"cmd\">sound( )</b> commands together "
+        + "<br> &emsp;&emsp;&emsp;&emsp; to make more complex patterns" },
+      { cmd: ".slow()", link: "note1-2", 
+        desc: "makes the pattern go slower. &emsp; <i>[ .slow(2) = half the speed ]</i>"},
+      { cmd: ".fast()", link: "note1-3", 
+        desc: "makes the pattern go faster. &emsp; <i>[ .fast(2) = double the speed ]</i>"},
+      { cmd: ".color()", link: "note3-2", desc: "colors the pianoroll"}
     ],
     stx: [
       { cmd: "~", link: "note2-2", 
-        desc: "the rest, inserts a step in the pattern of silence."},
+        desc: "the musical rest, inserts a step of silence."},
+      { cmd: "//", link: "note4-2", desc: "the comment symbol, makes Strudel " +
+      "skip the code on that line" },
       { cmd: "(\"A4 B3 C2\")", link: "note4", desc: "note names and octave numbers" }
     ]
   };
+
 </script>
 
 <svelte:window bind:innerWidth bind:outerHeight />
@@ -54,23 +60,23 @@
   />
 
   <div id="note1">
-  <p>
-    1. This is the <b>note( )</b> command. It is used to make melodies. For
-    those familiar with music notation the symbols might seem familiar. With
-    Capital letters from A to G, we represent all musical notes, although we
-    sometimes put a <b>#</b> or a <b>b</b> to alter them slightly. 
-  </p>
-  <p id="note1-2">
-    Right off the bat, we introduce the <b>.slow( )</b> command. This makes a
-    pattern go slower, as the name implies. You divide the patterns tempo by the
-    number you put in. <b>.slow(2)</b> halves the tempo, <b>.slow(3)</b> divides
-    the tempo by 3.
-  </p>
-  <p id="note1-3">
-    There is an opposite is the <b>.fast( )</b> command. The way it works is
-    that it multiplies the tempo by the number you put in. <b>.fast(2)</b>
-    doubles, and <b>.fast(3)</b> triples the tempo.
-  </p>
+    <p>
+      1. This is the <b class="cmd">note()</b> command. It is used to make melodies. For
+      those familiar with music notation the symbols might seem familiar. With
+      Capital letters from A to G, we represent all musical notes, although we
+      sometimes put a <b class="cmd">#</b> or a <b class="cmd">b</b> to alter them slightly. 
+    </p>
+    <p id="note1-2">
+      Right off the bat, we introduce the <b class="cmd">.slow()</b> command. This makes a
+      pattern go slower, as the name implies. You divide the patterns tempo by the
+      number you put in. <br><b class="cmd">.slow(2)</b> halves the tempo, <b class="cmd">.slow(3)</b> divides
+      the tempo by 3.
+    </p>
+    <p id="note1-3">
+      There is an opposite is the <b class="cmd">.fast()</b> command. The way it works is
+      that it multiplies the tempo by the number you put in. <br><b class="cmd">.fast(2)</b>
+      doubles, and <b class="cmd">.fast(3)</b> triples the tempo.
+    </p>
   </div>
   <Strudel 
     title="note()" 
@@ -80,9 +86,11 @@
   <div id="piano">
     <p id="piano-info">
       This is supposed to look like a piano. Try pressing a key, and you will
-      hear a musical note. You can use this to figure out melodies. There is a
-      button below that makes you be able to play it *like a piano* with your
-      computer keys.
+      hear a musical note. You can use this to figure out melodies.<br>
+      You need to turn on the sound by pressing the <i>Start Audio</i> button.
+      You can now klick the <i>keys</i> on the piano to hear a note.<br>
+      If you check the box named <i>Keyboard Playing</i>, 
+      you are also able to play the computer keys <i>*like a piano*</i>.
     </p>
     <!-- svelte-ignore will be init -->
     {#if $ctxstore && innerWidth > 1000}
@@ -95,19 +103,19 @@
   </div>
 
   <div id="note2">
-  <p>
-    2. Notice on the piano above, the note <b>C</b> repeats. Imagine that the
-    pianos keys repeats both to the left and right. To distinguish which note we
-    mean we add a number to the name. The default, when you do not add a number
-    to <b>C</b>, Strudel assumes it is the <b>C3</b> note. To play a lower note,
-    choose a lower number, and an higher for a higher note. In the example
-    below, we use a <b>B2</b>, which is lower than the regular <b>B</b> (B3).
-  </p>
-  <p id="note2-2">
-    There is also a new symbol in the pattern below. The <b>(~)</b> is a
-    super-useful symbol that symbolizes taking a rest. When it occurs in the pattern,
-    nothing plays, the sound takes a break.
-  </p>
+    <p>
+      2. Notice on the piano above, the note <b class="cmd">C</b> repeats. The pianos keys 
+      repeats both to the left and right. To distinguish which note we mean we add
+      a number to the name. The default, when you do not add a number to <b class="cmd">C</b>,
+      Strudel assumes it is the <b class="cmd">C3</b> note. To play a lower note, choose a
+      lower number, and an higher for a higher note. In the example below, we use
+      a <b class="cmd">B2</b>, which is lower than the regular <b class="cmd">B</b> (B3).
+    </p>
+    <p id="note2-2">
+      There is also a new symbol in the pattern below. The tilde <b class="cmd">'~'</b> is a
+      super-useful symbol that represents the musical rest. When it occurs in the pattern,
+      there is a step of silence.
+    </p>
   </div>
   <Strudel 
     title="note()" 
@@ -116,20 +124,21 @@
   />
 
   <div id="note3">
-  <p>
-    3. As you saw from the previous example, the length of the program can get
-    quite long when you keep on writing on the same line. Fortunatly the people
-    who made Strudel has thought about this. Below you see three lines, and some
-    commands on the following lines. This is called "chaining", and you can
-    chain some commands together even over several lines.
-  </p>
-  <p id="note3-2">
-    There is also a new command, the <b>.color( )</b> command. It makes the
-    <b>.pianoroll( )</b> command change color of the notes. Write the name of a
-    color within <b>" "</b> in the <b>.color( )</b> command and the pianoroll
-    changes.
-  </p>
-
+    <p>
+      3. As you saw from the previous example, the length of the program can get
+      quite long when you keep on writing on the same line. Fortunately the people
+      who made Strudel has thought of this. Below, you see three lines, and some
+      commands on the following lines. This is called "chaining", and you can
+      chain some commands together even over several lines. The link that chains
+      them together is symbolized by a dot.
+    </p>
+    <p id="note3-2">
+      We can make the pianoroll change color with the <b class="cmd">.color()</b> command. 
+      Write the name of a color within <b class="cmd">" "</b> in the 
+      <b class="cmd">.color()</b> command and the color of the notes changes.
+      Try changing it from <b class="cmd">"magenta"</b> to some other color of
+      your choice.
+    </p>
   </div>
   <Strudel 
     title="note()" 
@@ -138,24 +147,38 @@
   />
 
   <div id="note4">
-  <p>
-    4. Notice that the <b>sound( )</b> command has made a return. This time it
-    is written with a dot in front of it, telling us it is chained to the
-    <b>note( )</b> command. It makes us be able to change the sound of the notes
-    playing. There are a lot of built-in sounds that you can try out. This time
-    we chose <b>"gm_acoustic_guitar_nylon"</b>, the sound of a guitar, 
-    obviously.
-  </p>
+    <p>
+      4. The very last command for this chapter, which we will explore more in the
+      next, is the <b class="cmd">stack()</b> command. It makes it possible to play more than
+      one pattern at once. You can layer them on top of each other and make more
+      complex beats. You can think of <b class="cmd">stack()</b> as the bread of a
+      sandwich that you want to fill with stuff that tastes good together.
+    </p>
+    <p id="note4-2">
+      The example below uses a stack, which contains two <b
+      class="cmd">note()</b> and one <b class="cmd">sound()</b> pattern. The 
+      <b class="cmd">'//'</b> in front of some of the lines marks a <b>comment</b>, telling the
+      program that the code after them, <i>on the same line</i>, are not to be
+      played. Notice how the window turn the text gray to tell us which code is
+      not active.<br> Try removing the <b class="cmd">'//'</b> one line at a
+      time to activate the code and make each part sound.
+    </p>
   </div>
   <Strudel 
     title="note()" 
-    url={examples[3]}
-    height={380}
+    url={examples[4]}
+    height={400}
   />
 
   <Vocabulary 
-  commands={voc.cmd}
-  syntaxes={voc.stx}
+    commands={voc.cmd}
+    syntaxes={voc.stx}
   />
 </div>
 
+<style>
+  .cmd {
+    font-family: monospace;
+    font-size: 1.2em;
+  }
+</style>
