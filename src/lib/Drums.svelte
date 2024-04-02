@@ -1,28 +1,53 @@
 <script lang="ts">
-  type drumtypes = "bd" | "sd" | "rim" | "cp" | "hh" | "oh" | "cr" | "rd" | "lt" | "mt" | "ht" | "cb"; 
+  import {onMount} from 'svelte';
+	import type { Writable } from "svelte/store";
+  export let ctxstore: Writable<AudioContext|null>;
+  let ctx = $ctxstore!;
+  let out: AudioDestinationNode = ctx.destination;
+  
+  const dp =
+    "https://raw.githubusercontent.com/" +
+    "ritchse/tidal-drum-machines/main/" +
+    "machines/EmuSP12/emusp12-";
 
-  const dp = "https://strudel.cc/EmuSP12/";
+  type drumtypes = 
+    "bd" | "sd" | "rim" | "cp" |
+    "hh" | "oh" |  "cr" | "rd" |
+    "lt" | "mt" |  "ht" | "cb"; 
+
   const snds: {[key in drumtypes]: HTMLAudioElement} = {
-    bd:  new Audio(`${dp}bd/Bassdrum-01.wav`),
-    sd:  new Audio(`${dp}sd/Snaredrum-01.wav`),
+    bd:  new Audio(`${dp}bd/Bassdrum-01.wav`  ),
+    sd:  new Audio(`${dp}sd/Snaredrum-01.wav` ),
     rim: new Audio(`${dp}rim/zRim Shot-01.wav`),
-    cp:  new Audio(`${dp}cp/Clap.wav`),
+    cp:  new Audio(`${dp}cp/Clap.wav`         ),
     hh:  new Audio(`${dp}hh/Hat Closed-01.wav`),
-    oh:  new Audio(`${dp}oh/Hhopen1.wav`),
-    cr:  new Audio(`${dp}cr/Crash.wav`),
-    rd:  new Audio(`${dp}rd/Ride.wav`),
-    lt:  new Audio(`${dp}lt/Tom L-01.wav`),
-    mt:  new Audio(`${dp}mt/Tom M-01.wav`),
-    ht:  new Audio(`${dp}ht/Tom H-01.wav`),
-    cb:  new Audio(`${dp}cb/Cowbell.wav`),
+    oh:  new Audio(`${dp}oh/Hhopen1.wav`      ),
+    cr:  new Audio(`${dp}cr/Crash.wav`        ),
+    rd:  new Audio(`${dp}rd/Ride.wav`         ),
+    lt:  new Audio(`${dp}lt/Tom L-01.wav`     ),
+    mt:  new Audio(`${dp}mt/Tom M-01.wav`     ),
+    ht:  new Audio(`${dp}ht/Tom H-01.wav`     ),
+    cb:  new Audio(`${dp}cb/Cowbell.wav`      ),
   }
 
   const play = (e: MouseEvent) => {
     let el = e.target as HTMLElement;
+    console.log(snds[el.id as drumtypes]);
     snds[el.id as drumtypes].play();
   }
 
   console.log("drum sheet loaded");
+  
+  onMount(() => {
+    const audiostarter = document.getElementById("audiobtn");
+    audiostarter?.addEventListener("click", () => {
+      if (ctx.state === "suspended") {
+        ctx.resume().then(()=>{
+          console.log(ctx.state);
+        });
+      }
+    })
+  });
 
 </script>
 
@@ -67,12 +92,6 @@
         <button on:click={play} id="oh">oh</button>
       </td>
     </tr>
-
-    <!-- <tr>  -->
-    <!--   <td></td>  -->
-    <!--   <td>oh</td>  -->
-    <!--   <td><button>&#8203;</button></td> -->
-    <!-- </tr> -->
 
     <tr> 
       <td><b>CR</b>ash Cymbal</td>
@@ -127,5 +146,15 @@
     margin-right: 0.8em;
     max-width: 100%;
     min-width: calc(32% - 0.8em - 0.8em - 0.8em);
+  }
+
+  .audioctl{
+    display: flex;
+    /* flex-direction: row; */
+    margin-top: 1em;
+    margin-left: 2em;
+    width: 100%;
+    height: 30px;
+    gap: 2em;
   }
 </style>

@@ -5,7 +5,11 @@
   let ctx = $ctxstore!;
   let out: AudioDestinationNode = ctx.destination; 
 
-  type notes = "c" | "db" | "d" | "eb" | "e" | "f" | "gb" | "g" | "ab" | "a" | "bb" | "b" | "c2";
+  type notes = 
+    "c" | "db" | "d" | "eb" |
+    "e" | "f" | "gb" | "g"  |
+    "ab" | "a" | "bb" | "b" | 
+    "c2";
 
   const t = { "c": 0, "db":1, "d":2, "eb":3, "e":4, "f":5, "gb":6, "g":7, "ab":8, "a":9, "bb":10, "b":11, "c2":12 };
   const idx: notes[] = ["c","db","d","eb", "e", "f", "gb", "g", "ab", "a", "bb", "b", "c2"];
@@ -272,7 +276,7 @@
   </div>
   <div class="audioctl">
     <div>
-    <button id="audiobtn">Start Audio</button>
+      <button id="audiobtn">Start Audio</button>
     </div>
     <div>
       Keyboard Playing

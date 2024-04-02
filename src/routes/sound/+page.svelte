@@ -74,7 +74,7 @@
     </p>
 
 {#if $ctxstore}
-  <Drums />
+  <Drums ctxstore={ctxstore} />
 {/if}
 
     <p id="sound2-2">

@@ -34,9 +34,9 @@
     padding-bottom: 0.5em;
   }
 
-#shortcut p {
-  margin-top: -0.2em;
-  margin-right: 1.4em;
-}
+  #shortcut p {
+    margin-top: -0.2em;
+    margin-right: 1.4em;
+  }
 
 </style>
