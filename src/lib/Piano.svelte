@@ -302,6 +302,9 @@
   justify-content: center;
   border-radius: 14px;
   font-size: 1.2em;
+
+  background-color: white;
+  color: black;
 }
 
 .top {

@@ -79,7 +79,6 @@
       number of beats in the pattern. An example would be:<br>
       <b class="cmd">[ beats per minute / beats in pattern = cycles per minute ]</b>
     </p>
-  
   </div>
   <Strudel 
     title="stack()"
