@@ -12,6 +12,7 @@
     src={url}
     height={height}
     scrolling="auto"
+    loading="lazy"
   />
 </div>
 

@@ -8,7 +8,7 @@
   <a href="{base}/">HOME</a>
   <a href="{base}/sound">sound()</a>
   <a href="{base}/note">note()</a>
-  <!-- <a href="{base}/stack">stack()</a> -->
+  <a href="{base}/stack">stack()</a>
   <!-- <a href="{base}/samples">samples()</a> -->
   <!-- <a href="{base}/ping_pong">ping pong</a> -->
   <ShortCut />
