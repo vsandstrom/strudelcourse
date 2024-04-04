@@ -68,7 +68,7 @@
       The <b class="cmd">.cpm()</b> command, that we use below, is a bit tricky.
       It is short for <b>C</b>ycles <b>P</b>er <b>M</b>inute. If you
       think of one pass through a pattern as <i>one cycle</i>, the <b
-      class="cmd">.cmd()</b> sets how many passes it does each minute. A
+      class="cmd">.cpm()</b> sets how many passes it does each minute. A
       convention in music is to count the beats in a cycle (<i>measure</i>), and a common one is 4
       beats. A usual way to measure tempo is <b>B</b>eats <b>P</b>er
       <b>M</b>inute or <b>bpm</b>. Unfortunately <b>Strudel</b> does not understand
@@ -191,7 +191,7 @@
       The power to use this technique is seen in the example below. If you want
       to change the tempo of the song, you change the value of the variable <b
       class="cmd">tempo</b>, and the value of <b class="cmd">tempo</b> inside
-      the <b class="cmd">.cmd()</b> commands will change in all patterns
+      the <b class="cmd">.cpm()</b> commands will change in all patterns
       throughout. You can then change it on one place rather than at every line.
     </p>
   </div>
