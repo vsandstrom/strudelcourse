@@ -1,5 +1,11 @@
 <script lang="ts">
 	import './styles.css';
+  import {inject} from '@vercel/analytics'
+  import {injectSpeedInsights} from '@vercel/speed-insights/sveltekit'
+
+  inject();
+  injectSpeedInsights();
+
 </script>
 
 <div class="app">

@@ -37,6 +37,8 @@
   "type": "module",
   "dependencies": {
     "@sveltejs/adapter-vercel": "^5.1.1",
+    "@vercel/analytics": "^1.2.2",
+    "@vercel/speed-insights": "^1.0.10",
     "tone": "14.7"
   },
   "module": "index.ts"
