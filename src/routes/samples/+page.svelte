@@ -103,6 +103,20 @@
     </p>
     <img src={imgsrc} alt="Graphic explaining zero index">
 
+    <div id="samples2">
+    </div>
+    <Strudel
+      title="sample()"
+      url={examples[2]}
+    />
+    
+    <div id="samples3">
+    </div>
+    <Strudel
+      title="sample()"
+      url={examples[2]}
+    />
+
   <Vocabulary 
     commands={voc.cmd}
     syntaxes={voc.stx}
