@@ -17,6 +17,17 @@ const post = async (url: string) => {
   return dp.parseFromString(t, 'text/html');
 }
 
+const geturl = async (http: string) => {
+  const doc = await post(http);
+  const val = doc.getElementById("share-link")
+                 ?.getAttribute("data-static-file-url");
+  if (val) {
+    mp3 = val;
+    navigator.clipboard.writeText(val);
+    alert("Link copied to clipboard");
+  }
+}
+
 const parse = async () => {
   const valid = /(https:\/\/?(www.)?)?(freesound.org\/people\/.+\/sounds\/\d+(\/?))/g;
   const valid2 = /(https:\/\/?(www.)?)?(freesound.org\/s\/\d+(\/?))/g;
@@ -25,31 +36,19 @@ const parse = async () => {
     let http = "";
     let urlen = url.split("/");
     while (http.length == 0) {
-      http = urlen.pop();
+      let temp = urlen.pop();
+      if (temp) {
+        http = temp;
+      }
     }
     http = "https://freesound.org/s/" + http;
-    console.log(http);
-    const doc = await post(http);
-    const val = doc.getElementById("share-link")
-                   ?.getAttribute("data-static-file-url");
-    if (val) {
-      mp3 = val;
-      navigator.clipboard.writeText(val);
-      alert("Link copied to clipboard");
-    }
+    geturl(http);
   } else if ( valid2.test(url)) {
     let http = url;
     if (url.search(/^https:\/\//g)) {
       http = "https://" + url;
     }
-    const doc = await post(http);
-    const val = doc.getElementById("share-link")
-                   ?.getAttribute("data-static-file-url");
-    if (val) {
-      mp3 = val;
-      navigator.clipboard.writeText(val);
-      alert("Link copied to clipboard");
-    }
+    geturl(http);
   } else {
     console.log("no match")
   }
@@ -57,18 +56,12 @@ const parse = async () => {
 </script>
 
 <div>
-  <h3>
-    Freesound Parser
-  </h3>
   <div id="fst">
-    <p>
-      There is a great website called <a href="https://freesound.org">
-      freesound.org</a> where you can find all sorts of different sounds that
-      people around the world have recorded. We can use these in <b
-      class="cmd">Strudel</b>, but we need to do some things to make it work.
-    </p>
+  <h3>
+    <b class="cmd">Freesound -> Strudel</b>
+  </h3>
     <p> 
-      When you found a sound that you like, you copy the address to the page, <i>(
+      When you found a sound that you like, you copy the address of the page, <i>(
       the address bar at the top of you web browser )</i>. This link cannot be
       used in <b class="cmd">Strudel</b> directly, we have to transform it. Below
       is a tool that can do just that. Paste it in the text field, it
@@ -97,15 +90,15 @@ const parse = async () => {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 15%;
-  margin-right: 15%;
-  margin-top: 2.4em;
-  margin-bottom: 1.4em;
+  margin: 0.8em 15% 2.5em 15%;
 }
 
 #fst {
-  margin-left: 4%;
-  margin-right: 4%;
+  margin: 3em 2% 2em 2%;
+}
+
+#fst p {
+  margin: 0 2% 0 2%;
 }
 
 

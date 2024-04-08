@@ -72,7 +72,7 @@
       number you put in. <br><b class="cmd">.slow(2)</b> halves the tempo, <b class="cmd">.slow(3)</b> divides
       the tempo by 3.
     </p>
-    <p id="note1-3">
+    <p id="note1-3"
       There is an opposite is the <b class="cmd">.fast()</b> command. The way it works is
       that it multiplies the tempo by the number you put in. <br><b class="cmd">.fast(2)</b>
       doubles, and <b class="cmd">.fast(3)</b> triples the tempo.

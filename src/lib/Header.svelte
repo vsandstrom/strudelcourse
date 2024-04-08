@@ -5,7 +5,7 @@
 </script>
 
 <section id="header">
-  <a href="{base}/">HOME</a>
+  <a id="home" href="{base}/">Home</a>
   <a href="{base}/sound">sound()</a>
   <a href="{base}/note">note()</a>
   <a href="{base}/stack">stack()</a>
@@ -23,10 +23,15 @@
   border-bottom: solid;
 }
 
-#header a {
-  height: 1.8em;
+a {
+  height: 1.5em;
     font-family: monospace;
-    font-size: 1.5em;
+    font-size: 1.4em;
+}
+
+#home {
+  font-size: 2.2em;
+  margin-top: -0.3em;
 }
   
 </style>

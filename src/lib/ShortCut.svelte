@@ -9,6 +9,7 @@
   <div id="sc">
     <a href="{base}/sound#drums">Drum Kit</a>
     <a href="{base}/note#piano">Piano Keys</a>
+    <a href="{base}/samples#fps">Freesound -> Strudel</a>
   </div>
 </div>
 
@@ -25,7 +26,7 @@
     flex-direction: row;
     justify-content:flex-end;
     padding-bottom: 0.3em;
-    margin-top: -0.4em;
+    margin-top: -1em;
     font-family: monospace;
     font-size: 0.8em;
   }
