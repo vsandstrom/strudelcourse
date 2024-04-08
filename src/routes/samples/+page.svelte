@@ -92,7 +92,7 @@
       slices, and you have 4 slices of a sound, we can use the numbers 0 to 3.
       Why not 1 to 4? 
     </p>
-    <p>
+    <p id="samples2">
       Imagine a youtube video that you want to play from the beginning, you
       would play it from <b class="cmd">00:00</b>, which is position <b
       class="cmd">0</b>. The first slice is the part between <b
@@ -101,7 +101,7 @@
       something from the position of <b class="cmd">4</b>, we are trying to
       continue playing the clip after it has ended. There is nothing there.
     </p>
-    <img src={imgsrc} alt="">
+    <img src={imgsrc} alt="Graphic explaining zero index">
 
   <Vocabulary 
     commands={voc.cmd}
