@@ -9,7 +9,7 @@
   <div id="sc">
     <a href="{base}/sound#drums">Drum Kit</a>
     <a href="{base}/note#piano">Piano Keys</a>
-    <a href="{base}/samples#fps">Freesound -> Strudel</a>
+    <!-- <a href="{base}/samples#fps">Freesound -> Strudel</a> -->
   </div>
 </div>
 
