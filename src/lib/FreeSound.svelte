@@ -4,7 +4,7 @@
 
 let url = '';
 
-let mp3 = '< Copy link from here >';
+let mp3 = '< Copy this link >';
 
 $: output = mp3;
 
@@ -19,14 +19,39 @@ const post = async (url: string) => {
 
 const parse = async () => {
   const valid = /(https:\/\/?(www.)?)?(freesound.org\/people\/.+\/sounds\/\d+(\/?))/g;
+  const valid2 = /(https:\/\/?(www.)?)?(freesound.org\/s\/\d+(\/?))/g;
+
   if (valid.test(url)) {
-    const doc = await post(url);
+    let http = "";
+    let urlen = url.split("/");
+    while (http.length == 0) {
+      http = urlen.pop();
+    }
+    http = "https://freesound.org/s/" + http;
+    console.log(http);
+    const doc = await post(http);
     const val = doc.getElementById("share-link")
                    ?.getAttribute("data-static-file-url");
-    console.log(val);
     if (val) {
       mp3 = val;
+      navigator.clipboard.writeText(val);
+      alert("Link copied to clipboard");
     }
+  } else if ( valid2.test(url)) {
+    let http = url;
+    if (url.search(/^https:\/\//g)) {
+      http = "https://" + url;
+    }
+    const doc = await post(http);
+    const val = doc.getElementById("share-link")
+                   ?.getAttribute("data-static-file-url");
+    if (val) {
+      mp3 = val;
+      navigator.clipboard.writeText(val);
+      alert("Link copied to clipboard");
+    }
+  } else {
+    console.log("no match")
   }
 }
 </script>
@@ -35,7 +60,7 @@ const parse = async () => {
   <h3>
     Freesound Parser
   </h3>
-  <div>
+  <div id="fst">
     <p>
       There is a great website called <a href="https://freesound.org">
       freesound.org</a> where you can find all sorts of different sounds that
@@ -74,6 +99,13 @@ const parse = async () => {
   justify-content: center;
   margin-left: 15%;
   margin-right: 15%;
+  margin-top: 2.4em;
+  margin-bottom: 1.4em;
+}
+
+#fst {
+  margin-left: 4%;
+  margin-right: 4%;
 }
 
 
@@ -82,7 +114,7 @@ const parse = async () => {
   height: 2em;
   font-family: monospace;
   font-size: 1.2em;
-  padding-left: 0.5em;
+  padding-left: 0.8em;
 }
 
 #output {
@@ -94,5 +126,9 @@ const parse = async () => {
 .cmd {
   font-family: monospace;
   font-size: 1.2em;
+}
+
+input {
+  border-radius: 18px;
 }
 </style>
