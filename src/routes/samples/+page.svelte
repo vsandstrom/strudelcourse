@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import Strudel from "$lib/Strudel.svelte";
   import Header from "$lib/Header.svelte";
   import data from "$lib/strudel.json";
@@ -6,20 +7,21 @@
   import Vocabulary from "$lib/Vocabulary.svelte";
   import FreeSound from "$lib/FreeSound.svelte";
   import imgsrc from "$lib/zeroidx.png";
+	import type { onMount } from "svelte";
   const examples = data["samples"];
+  let mounted = false;
+
+  $: mount = mounted;
 
   const voc = {
     cmd: [ 
       { cmd: "samples()", link: "samples", 
-        desc: 
-        "A command that helps you import sounds to use in your \ compositions"
-      }, 
+        desc: "A command that helps you import sounds to use in your compositions" }, 
       { cmd: ".slice()", link: "samples1-2", desc: `Cuts a sound up in several
-      pieces and lets you play them with a pattern.
-      <br>&emsp;&emsp;&emsp;&emsp; \
-      <i>[ ex: </i><b
-      style="font-family:monospace;font-size:1.2em">sound(\"snd\").slice(4, \
-      ${"\"0 1 2 3\""})</b><i> ]</i>`},
+        pieces and lets you play them with a pattern. \ 
+        <br>&emsp;&emsp;&emsp;&emsp; <i>[ ex: </i><b \
+        style="font-family:monospace;font-size:1.2em">sound(\"snd\").slice(4,\
+        ${"\"0 1 2 3\""})</b><i> ]</i>`},
       { cmd: ".splice()", link: "samples1-3", desc: `Same as <b
       style="font-family:monospace;font-size:1.2em">.slice()</b>, but stretches
       the sound to fit the pattern.`
@@ -43,18 +45,24 @@
       <br>&emsp;&emsp;&emsp;&emsp; \
       <i>[ listen to the difference: </i><b
       style="font-family:monospace;font-size:1.2em">sound(\"bd*4 bd!4\")</b><i> ]</i>`},
-
     ]
   }
+
+  onMount(() => {
+    mounted = true;
+  })
+
 </script>
 
 <div>
   <Header />
-  <SubHeader 
-    pageid={"samples"}
-    numExamples={1}
-    extras={[]}
-  />
+  {#if mount}
+    <SubHeader 
+      pageid={"samples"}
+      numExamples={1}
+      extras={[]}
+    />
+  {/if}
 
   <div id="samples1">
     <p>
@@ -104,6 +112,7 @@
     <img src={imgsrc} alt="Graphic explaining zero index">
 
     <div id="samples2">
+     2.
     </div>
     <Strudel
       title="sample()"
@@ -111,16 +120,19 @@
     />
     
     <div id="samples3">
+      3.
     </div>
     <Strudel
       title="sample()"
       url={examples[2]}
     />
 
-  <Vocabulary 
-    commands={voc.cmd}
-    syntaxes={voc.stx}
-  />
+  {#if mount}
+    <Vocabulary 
+      commands={voc.cmd}
+      syntaxes={voc.stx}
+    />
+  {/if}
 </div>
 
 <style>
@@ -131,5 +143,7 @@
 
   img {
     width: 100%;
+    margin-top: 2em;
+    margin-bottom: 5em;
   }
 </style>
