@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import Strudel from '$lib/Strudel.svelte';
-	import data from '$lib/strudel.json';
 	import SubHeader from '$lib/SubHeader.svelte';
 	import Vocabulary from '$lib/Vocabulary.svelte';
 	import FreeSound from '$lib/FreeSound.svelte';
 	import ZeroIndex from '$lib/ZeroIndex.svelte';
+	import data from '$lib/strudel.json';
 	const examples = data['samples'];
 	let mounted = false;
 

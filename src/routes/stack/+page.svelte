@@ -56,7 +56,6 @@
 
 <div>
 	<SubHeader pageid="stack" numExamples={4} extras={[]} />
-
 	<div id="stack1">
 		<p>
 			1. We continue with the <b class="cmd">stack()</b> command. It is a way to, as the name implies,
