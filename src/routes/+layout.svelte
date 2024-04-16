@@ -1,35 +1,37 @@
 <script lang="ts">
 	import './styles.css';
-  import {inject} from '@vercel/analytics'
-  import {injectSpeedInsights} from '@vercel/speed-insights/sveltekit'
-  import Footer from '$lib/Footer.svelte';
-  import Header from '$lib/Header.svelte';
+	import { inject } from '@vercel/analytics';
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+	import Footer from '$lib/Footer.svelte';
+	import Header from '$lib/Header.svelte';
 
-  inject();
-  injectSpeedInsights();
-
+	inject();
+	injectSpeedInsights();
 </script>
+
 <svelte:head>
 	<title>Home</title>
-  <meta name="title" content="Creative Coding Chalmers">
-  <meta name="description" content="Course in programming using the Strudel music live-coding language">
-  <meta name="keywords" content="programming, course, creative, music, chalmers">
-  <meta name="robots" content="index, follow">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="language" content="English">
-  <meta name="revisit-after" content="14 days">
-  <meta name="author" content="Viktor Sandström">
+	<meta name="title" content="Creative Coding Chalmers" />
+	<meta
+		name="description"
+		content="Course in programming using the Strudel music live-coding language"
+	/>
+	<meta name="keywords" content="programming, course, creative, music, chalmers" />
+	<meta name="robots" content="index, follow" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="language" content="English" />
+	<meta name="revisit-after" content="14 days" />
+	<meta name="author" content="Viktor Sandström" />
 </svelte:head>
 
 <div class="app">
 	<main>
-    <Header/> 
+		<Header />
 		<slot />
-    <Footer />
+		<Footer />
 	</main>
 
-  <footer></footer>
-
+	<footer></footer>
 </div>
 
 <style>
@@ -56,7 +58,7 @@
 		justify-content: center;
 		align-items: center;
 		padding: 12px;
-    height: 6em;
+		height: 6em;
 	}
 
 	footer a {
@@ -69,32 +71,31 @@
 		}
 	}
 
-  .pagetitle {
-    margin-left: 0;
-  } 
+	.pagetitle {
+		margin-left: 0;
+	}
 
-  #vocabulary {
-    margin-left: 1.5em;
-  }
+	#vocabulary {
+		margin-left: 1.5em;
+	}
 
-  ol > li {
-    margin-bottom: 0.6em;
-  }
+	ol > li {
+		margin-bottom: 0.6em;
+	}
 
-  .links {
-    display: flex;
-    gap: 1.2em;
-    margin-left: 0em;
-  }
+	.links {
+		display: flex;
+		gap: 1.2em;
+		margin-left: 0em;
+	}
 
-  .examples {
-    margin-top: 1em;
-    margin-bottom: 2em;
-  }
+	.examples {
+		margin-top: 1em;
+		margin-bottom: 2em;
+	}
 
-  .cmd {
-    font-family: monospace;
-    font-size: 1.2em;
-  }
-
+	.cmd {
+		font-family: monospace;
+		font-size: 1.2em;
+	}
 </style>

@@ -1,11 +1,11 @@
 <script lang="ts">
-  import github from '$lib/gh.png';
+  import {base} from '$app/paths';
 </script>
 
 
 <div id="footer">
   <a href="https://github.com/vsandstrom/strudelcourse">
-    <img src={github} alt="Github Icon" title="Page source code">
+    <img src="{base}/gh.png" alt="Github Icon" title="Page source code">
   </a>
 </div>
 
@@ -13,6 +13,7 @@
 <style>
   img {
     width: 3.8em;
+    height: 3.8em;
   }
 
 img:hover {

@@ -3,7 +3,7 @@ name: Deploy SvelteKit to GitHub Pages
 on:
   push:
     branches:
-      - gh-pages  # Change this to match your main branch name
+      - gh-pages # Change this to match your main branch name
 
 jobs:
   deploy:
@@ -16,8 +16,8 @@ jobs:
       - name: Use Bun.js
         uses: oven-sh/setup-bun@v1
         with:
-          bun-version: "latest"
-      
+          bun-version: 'latest'
+
       - name: Install Dependencies
         run: |
           bun install

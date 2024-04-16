@@ -1,11 +1,9 @@
-
 <script lang="ts" type="module">
-  // import Strudel from "$lib/Strudel.svelte";
-  import Header from "$lib/Header.svelte";
-  import ShortCut from "$lib/ShortCut.svelte";
-  import Footer from "$lib/Footer.svelte";
+	// import Strudel from "$lib/Strudel.svelte";
+	import Header from '$lib/Header.svelte';
+	import ShortCut from '$lib/ShortCut.svelte';
+	import Footer from '$lib/Footer.svelte';
 </script>
-
 
 <!-- <svelte:head> -->
 <!-- 	<title>Home</title> -->
@@ -19,9 +17,8 @@
 <!--   <meta name="author" content="Viktor Sandström"> -->
 <!-- </svelte:head> -->
 
-
 <section class="welcome">
-  <h1>{"Welcome to Creative Coding!"}</h1>
+	<h1>{'Welcome to Creative Coding!'}</h1>
 </section>
 
 <style>
@@ -45,11 +42,11 @@
 		padding: 0 0 calc(100% * 495 / 2048) 0;
 	}
 
-  .welcome h1 {
-    font-size: 4em;
-    margin-top: 20%;
-    margin-bottom: 8%;
-  }
+	.welcome h1 {
+		font-size: 4em;
+		margin-top: 20%;
+		margin-bottom: 8%;
+	}
 
 	.welcome img {
 		position: absolute;
@@ -58,5 +55,4 @@
 		top: 0;
 		display: block;
 	}
-
 </style>
