@@ -48,7 +48,6 @@
 </script>
 
 <div>
-  <Header />
   <SubHeader 
     pageid=stack 
     numExamples={4}

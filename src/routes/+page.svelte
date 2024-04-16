@@ -3,23 +3,22 @@
   // import Strudel from "$lib/Strudel.svelte";
   import Header from "$lib/Header.svelte";
   import ShortCut from "$lib/ShortCut.svelte";
+  import Footer from "$lib/Footer.svelte";
 </script>
 
 
-<svelte:head>
-	<title>Home</title>
-  <meta name="title" content="Creative Coding Chalmers">
-  <meta name="description" content="Course in programming using the Strudel music live-coding language">
-  <meta name="keywords" content="programming, course, creative, music, chalmers">
-  <meta name="robots" content="index, follow">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="language" content="English">
-  <meta name="revisit-after" content="14 days">
-  <meta name="author" content="Viktor Sandström">
-</svelte:head>
+<!-- <svelte:head> -->
+<!-- 	<title>Home</title> -->
+<!--   <meta name="title" content="Creative Coding Chalmers"> -->
+<!--   <meta name="description" content="Course in programming using the Strudel music live-coding language"> -->
+<!--   <meta name="keywords" content="programming, course, creative, music, chalmers"> -->
+<!--   <meta name="robots" content="index, follow"> -->
+<!--   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> -->
+<!--   <meta name="language" content="English"> -->
+<!--   <meta name="revisit-after" content="14 days"> -->
+<!--   <meta name="author" content="Viktor Sandström"> -->
+<!-- </svelte:head> -->
 
-<Header>
-</Header>
 
 <section class="welcome">
   <h1>{"Welcome to Creative Coding!"}</h1>
@@ -48,12 +47,14 @@
 
   .welcome h1 {
     font-size: 4em;
+    margin-top: 20%;
+    margin-bottom: 8%;
   }
 
 	.welcome img {
 		position: absolute;
 		width: 100%;
-		height: 100%;
+		height: 80%;
 		top: 0;
 		display: block;
 	}

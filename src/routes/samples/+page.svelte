@@ -69,7 +69,6 @@
 </script>
 
 <div>
-  <Header />
   {#if mount}
     <SubHeader 
       pageid={"samples"}

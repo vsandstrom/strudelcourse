@@ -52,7 +52,6 @@
 <svelte:window bind:innerWidth bind:outerHeight />
 
 <div>
-  <Header />
   <SubHeader 
     pageid={"note"}
     numExamples={4}

@@ -42,9 +42,7 @@
 </script>
 
 <div>
-  <Header />
   {#if $ctxstore}
-
   <SubHeader 
     pageid={"sound"}
     numExamples={4}
