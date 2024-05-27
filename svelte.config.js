@@ -17,7 +17,8 @@ const config = {
 			pages: 'build'
 		}),
 		prerender: {
-			entries: ['*', '/', '/note', '/sound', '/stack', '/ping_pong', '/samples', '/tutorial']
+			entries: ['*', '/', '/note', '/sound', '/stack', '/ping_pong', '/samples', '/tutorial'],
+      handleMissingId: "ignore"
 		},
 		paths: {
 			base: process.env.NODE_ENV === 'production' ? '/strudelcourse/build' : ''
