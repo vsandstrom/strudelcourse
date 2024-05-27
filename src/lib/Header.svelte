@@ -1,15 +1,26 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import ShortCut from './ShortCut.svelte';
+  import { goto } from '$app/navigation';
+  
+  const noid = "javascript:void(0);";
+
+  const route = (e: any) => {
+    if (e.currentTarget.id == "home") {
+      goto(`${base}/`);
+    } else {
+      goto(`${base}/${e.currentTarget.id}/`);
+    }
+  }
 	console.log('header loaded');
 </script>
 
 <section id="header">
-	<a id="home" href="{base}/">Home</a>
-	<a href="{base}/sound">sound()</a>
-	<a href="{base}/note">note()</a>
-	<a href="{base}/stack">stack()</a>
-	<a href="{base}/samples">samples()</a>
+	<a id="home" title="Home directory" href={noid} on:click={route}>Home</a>
+	<a id="sound" title="sound()"       href={noid} on:click={route}>sound()</a>
+	<a id="note" title="note()"         href={noid} on:click={route}>note()</a>
+	<a id="stack" title="stack()"       href={noid} on:click={route}>stack()</a>
+	<a id="samples" title="samples()"   href={noid} on:click={route}>samples()</a>
 	<!-- <a href="{base}/ping_pong">ping pong</a> -->
 	<ShortCut />
 </section>

@@ -4,7 +4,7 @@
 	// Number of examples on page
 	export let numExamples: number;
 	// Any special links or sections on page i.e. Piano or drum cheat sheet
-	export let extras: { id: string; content: string }[];
+	export let extras: { id: string; content: string; info: string | null }[];
 
 	const range = (num: number, start: number) => {
 		return [...Array(num).keys()].map((i) => i + start);
@@ -23,7 +23,7 @@
 <div class="links">
 	<a href="#vocabulary">Vocabulary</a>
 	{#each extras as extra}
-		<a href="#{extra.id}">{extra.content}</a>
+		<a title={extra.info} href="#{extra.id}">{extra.content}</a>
 	{/each}
 </div>
 <div class="links examples">

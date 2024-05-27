@@ -1,13 +1,18 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+
+  const drumkit_info = "Drumkit audition tool and abbreviation lexicon";
+  const piano_info = "Piano roll, playable with computer keyboard and mouse";
+  const freesound_info = "Freesound.org link converter, making a link usable in Strudel"
+
 </script>
 
 <div id="shortcut">
 	<p>Shortcuts:</p>
 	<div id="sc">
-		<a href="{base}/sound#drums">Drum Kit</a>
-		<a href="{base}/note#piano">Piano Keys</a>
-		<a href="{base}/samples#fps">Freesound -> Strudel</a>
+		<a title={drumkit_info} href="{base}/sound#drums">Drum Kit</a>
+		<a title={piano_info} href="{base}/note#piano">Piano Keys</a>
+		<a title={freesound_info} href="{base}/samples#fps">Freesound -> Strudel</a>
 	</div>
 </div>
 

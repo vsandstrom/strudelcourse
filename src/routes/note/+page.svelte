@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { base } from '$app/paths';
-	import Header from '$lib/Header.svelte';
 	import SubHeader from '$lib/SubHeader.svelte';
 	import Vocabulary from '$lib/Vocabulary.svelte';
 	import Strudel from '$lib/Strudel.svelte';
