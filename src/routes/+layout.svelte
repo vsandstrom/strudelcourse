@@ -38,7 +38,7 @@
 	.app {
 		display: flex;
 		flex-direction: column;
-		min-height: 100vh;
+		/* min-height: 100vh; */
 	}
 
 	main {
@@ -47,7 +47,7 @@
 		flex-direction: column;
 		padding: 1rem;
 		width: 100%;
-		max-width: 70rem;
+		max-width: 70%;
 		margin: 0 auto;
 		box-sizing: border-box;
 	}
@@ -65,18 +65,9 @@
 		font-weight: bold;
 	}
 
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
-	}
 
 	.pagetitle {
 		margin-left: 0;
-	}
-
-	#vocabulary {
-		margin-left: 1.5em;
 	}
 
 	ol > li {
@@ -97,5 +88,16 @@
 	.cmd {
 		font-family: monospace;
 		font-size: 1.2em;
+	}
+	
+  @media only screen and (max-width: 680px) {
+		footer {
+			padding: 12px 0;
+		}
+    main {
+      max-width: 85%;
+    }
+
+
 	}
 </style>

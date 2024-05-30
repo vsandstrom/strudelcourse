@@ -28,7 +28,8 @@
 
 <style>
 	#vocabulary {
-		margin-left: 1.5em;
+    margin-left: 4%;
+		/* margin-left: 1.5em; */
 	}
 
 	ol li,
