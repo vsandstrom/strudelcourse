@@ -108,12 +108,13 @@
       flex-direction: column;
       padding: 8px;
       margin: 6.6em 64% 1.2em;
-      width: 7em;
+      width: 9em;
       gap: 0.6em;
       border-radius: 5px;
       font-size: 1em;
 		  font-family: monospace;
       background-color: rgb(202, 216, 228);
+      border: solid;
     }
 
     .bar{
