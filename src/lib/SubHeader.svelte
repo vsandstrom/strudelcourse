@@ -23,7 +23,7 @@
 <div class="links">
 	<a href="#vocabulary">Vocabulary</a>
 	{#each extras as extra}
-		<a href="#{extra.id}">{extra.content}</a>
+		<a href="#{extra.id}" id={extra.id}>{extra.content}</a>
 	{/each}
 </div>
 <div class="links examples">
@@ -50,4 +50,11 @@
 		margin-top: 1em;
 		margin-bottom: 2em;
 	}
+
+
+  @media only screen and (max-width: 680px) {
+    #piano {
+      display: none;
+    }
+  }
 </style>

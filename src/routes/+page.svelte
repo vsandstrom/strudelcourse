@@ -5,17 +5,17 @@
 	import Footer from '$lib/Footer.svelte';
 </script>
 
-<!-- <svelte:head> -->
-<!-- 	<title>Home</title> -->
-<!--   <meta name="title" content="Creative Coding Chalmers"> -->
-<!--   <meta name="description" content="Course in programming using the Strudel music live-coding language"> -->
-<!--   <meta name="keywords" content="programming, course, creative, music, chalmers"> -->
-<!--   <meta name="robots" content="index, follow"> -->
-<!--   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> -->
-<!--   <meta name="language" content="English"> -->
-<!--   <meta name="revisit-after" content="14 days"> -->
-<!--   <meta name="author" content="Viktor Sandström"> -->
-<!-- </svelte:head> -->
+<svelte:head>
+	<title>Home</title>
+  <meta name="title" content="Creative Coding Chalmers">
+  <meta name="description" content="Course in programming using the Strudel music live-coding language">
+  <meta name="keywords" content="programming, course, creative, music, chalmers">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <meta name="revisit-after" content="14 days">
+  <meta name="author" content="Viktor Sandström">
+</svelte:head>
 
 <section class="welcome">
 	<h1>{'Welcome to Creative Coding!'}</h1>
